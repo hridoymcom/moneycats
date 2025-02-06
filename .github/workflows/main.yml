@@ -14,7 +14,7 @@ jobs:
 
       - name: Set Git user identity
         run: |
-          git config --global user.name "hridoymcom"
+         git config --global user.name "hridoymcom"
           git config --global user.email "hridoymcom@gmail.com"
 
       - name: Unzip file
@@ -22,8 +22,12 @@ jobs:
           mkdir extracted_files
           unzip '*.zip' -d extracted_files/
 
+      - name: Add all untracked files to Git
+        run: |
+          git add .
+
       - name: Commit extracted files
         run: |
-          git add extracted_files/*
           git commit -m "Unzipped files"
           git push
+
