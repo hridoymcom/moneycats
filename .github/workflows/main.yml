@@ -1,4 +1,4 @@
-name: Unzip File
+name: Unzip and Commit Files
 
 on:
   push:
@@ -14,12 +14,12 @@ jobs:
 
       - name: Set Git user identity
         run: |
-         git config --global user.name "hridoymcom"
+          git config --global user.name "hridoymcom"
           git config --global user.email "hridoymcom@gmail.com"
 
       - name: Unzip file
         run: |
-          mkdir extracted_files
+          mkdir -p extracted_files
           unzip '*.zip' -d extracted_files/
 
       - name: Add all untracked files to Git
@@ -28,6 +28,11 @@ jobs:
 
       - name: Commit extracted files
         run: |
-          git commit -m "Unzipped files"
-          git push
+          git commit -m "Unzipped files" || echo "No changes to commit"
 
+      - name: Push changes
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${PAT_TOKEN}@github.com/hridoymcom/moneycats.git
+          git push origin main
