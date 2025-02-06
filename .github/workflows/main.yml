@@ -12,6 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set Git user identity
+        run: |
+          git config --global user.name "hridoymcom"
+          git config --global user.email "hridoymcom@gmail.com"
+
       - name: Unzip file
         run: |
           mkdir extracted_files
