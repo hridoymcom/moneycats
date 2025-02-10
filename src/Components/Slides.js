@@ -8,9 +8,9 @@ const slides = [
     link: '/checkin',
   },
   {
-    title: '$MEGADOGS COMMUNITY',
-    description: 'Join MEGADOGSs community channel',
-    link: 'https://t.me/codesrushdev',
+    title: '$MCATS COMMUNITY',
+    description: 'Join MONEY CATS community',
+    link: 'https://t.me/MoneyCatsCommunity',
   },
 ];
 
