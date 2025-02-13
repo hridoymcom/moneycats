@@ -23,7 +23,7 @@ const Ref = () => {
 
   const copyToClipboard = () => {
     // eslint-disable-next-line
-    const reflink = `https://t.me/megadogs_bot?start=r${id}\n\$MEGADOGS tokens mining is live! Two is better than one!  Join my squad, and let\'s double the fun (and earnings 🤑)! $MEGADOGS Power Tap! 🚀`;
+    const reflink = `https://t.me/money_mcatsbot?start=r${id}\n\$MCATS tokens mining is live! Two is better than one!  Join my squad, and let\'s double the fun (and earnings 🤑)! $MCATS Power Tap! 🚀`;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard
@@ -64,10 +64,10 @@ const Ref = () => {
 
   const handleShare = async () => {
     const shareData = {
-      title: "Mine $MEGADOGS tokens now!",
+      title: "Mine $MCATS tokens now!",
       // eslint-disable-next-line
-      url: `https://t.me/megadogs_bot?start=r${id}\n\ `, // Replace with your link
-      text: "$MEGADOGS tokens mining is live! Two is better than one!  Join my squad, and let's double the fun (and earnings 🤑)! $MEGADOGS Power Tap! 🚀",
+      url: `https://t.me/money_mcatsbot?start=r${id}\n\ `, // Replace with your link
+      text: "$MCATS tokens mining is live! Two is better than one!  Join my squad, and let's double the fun (and earnings 🤑)! $MCATS Power Tap! 🚀",
     };
 
     if (navigator.share) {
@@ -85,7 +85,7 @@ const Ref = () => {
   const fallbackShare = (shareData) => {
     const encodedText = encodeURIComponent(
       // eslint-disable-next-line
-      `${shareData.url} \n\$MEGADOGS tokens mining is live! Two is better than one!  Join my squad, and let\'s double the fun (and earnings 🤑)! $MEGADOGS Power Tap! 🚀`
+      `${shareData.url} \n\$MCATS tokens mining is live! Two is better than one!  Join my squad, and let\'s double the fun (and earnings 🤑)! $MCATS Power Tap! 🚀`
     );
     const encodedUrl = encodeURIComponent(shareData.url);
 
@@ -184,7 +184,7 @@ const Ref = () => {
           <div className="w-full pt-3 justify-center flex-col space-y-3 px-5">
             <div className="w-full flex justify-center">
               <h1 className="font-semibold text-[28px] text-[#ffffffe0] pb-1 text-center">
-                Invite friends <br/>& get more $MEGADOGS
+                Invite friends <br/>& get more $MCATS
               </h1>
             </div>
 
@@ -254,7 +254,7 @@ const Ref = () => {
                 className="small-text2 font-semibold relative py-2 px-3 text-primary flex items-center space-x-2 text-[14px] text rounded-[6px]"
               >
              <span className="">
-                {refBonus} $MEGADOGS
+                {refBonus} $MCATS
                 </span>  
                 <IoInformationCircle onClick={() => setInfo(true)} size={14} className="text-gray-400"/>
 
