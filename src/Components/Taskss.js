@@ -29,20 +29,20 @@ const Taskss = () => {
 
   // Initialize the ad script using useEffect
   useEffect(() => {
-    if (window.show_8693006) {
+    if (window.show_8978173) {
       return;
     }
 
     const tag = document.createElement("script");
-    tag.src = "//niphaumeenses.net/vignette.min.js";
-    tag.dataset.zone = "8693006";
-    tag.dataset.sdk = "show_8693006";
+    tag.src = "//whephiwums.com/vignette.min.js";
+    tag.dataset.zone = "8978173";
+    tag.dataset.sdk = "show_8978173";
 
     document.body.appendChild(tag);
   }, []);
 
   const showAd = async () => {
-    if (!window.show_8693006) {
+    if (!window.show_8978173) {
       console.error("Ad script not loaded yet.");
       return;
     }
@@ -50,7 +50,7 @@ const Taskss = () => {
     setIsAdLoading(true);
 
     try {
-      await window.show_8693006();
+      await window.show_8978173();
       handleAdCompletion();
     } catch (error) {
       console.error("Error showing ad:", error);
@@ -198,8 +198,8 @@ const Taskss = () => {
           <RiAdvertisementFill size={20} color="white" />
         </div>
         <div style={styles.body}>
-          <div style={styles.title}>Watch an Ad to Earn {task.bonus} NEWCATS</div>
-          <div style={styles.footer}>+{task.bonus} NEWCATS</div>
+          <div style={styles.title}>Watch an Ad to Earn {task.bonus} $MCATS</div>
+          <div style={styles.footer}>+{task.bonus} $MCATS</div>
         </div>
         <div style={styles.after}>
           {!adWatched ? (
