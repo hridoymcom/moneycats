@@ -82,12 +82,12 @@ const TonTask = () => {
           <span className='flex items-center justify-center space-x-[2px] text-[18px]'>
 <img src='/dogs.webp' alt='sdfd' className='w-[15px]'/>
 
-          <span className="text-accent">+10,000 $MEGADOGS CLAIMED</span>
+          <span className="text-accent">+10,000 $MCATS CLAIMED</span>
               </span>
           <span>Task Completed</span>
         </span>
         <p className="pb-6 text-[15px] w-full text-center">
-          Perform more activities or buy more $MEGADOGS to stay ahead and claim listing giveaway bonues!😎
+          Perform more activities or buy more $MCATS to stay ahead and claim listing giveaway bonues!😎
         </p>
       </div>
       );
@@ -145,7 +145,7 @@ className="w-full rounded-[16px] py-3 flex items-center justify-between space-x-
                     <span className='flex text-secondary items-center w-fit text-[15px]'>
                    
                       <span className=''>
-                        +{formatNumber(bonusAward)} $MEGADOGS
+                        +{formatNumber(bonusAward)} $MCATS
                       </span>
                     </span>
                   </div>
