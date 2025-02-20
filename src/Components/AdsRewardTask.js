@@ -105,14 +105,14 @@ const AdRewardComponent = () => {
 
       const script = document.createElement('script');
       script.src = '//whephiwums.com/vignette.min.js';
-      script.dataset.zone = '8846433';
-      script.dataset.sdk = 'show_8846433';
+      script.dataset.zone = '8978173';
+      script.dataset.sdk = 'show_8978173';
       
       script.onload = () => {
         setIsScriptLoaded(true);
         // Wait for the ad SDK to be initialized
         const checkInterval = setInterval(() => {
-          if (window.show_8846433) {
+          if (window.show_8978173) {
             clearInterval(checkInterval);
             setIsScriptInitialized(true);
             resolve();
