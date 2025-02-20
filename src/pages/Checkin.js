@@ -19,7 +19,7 @@ const DailyCheckIn = () => {
   const [streak, setStreak] = useState(false);
 
 
-  const bonusPoints = [500, 1000, 2500, 300, 15000, 25000, 100000, 500000, 1000000, 5000000, 10000000, 15000000, 20000000, 25000000, 35000000];
+  const bonusPoints = [70, 120, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1500, 2000, 3000, 5000];
 
 
 
@@ -223,7 +223,7 @@ const DailyCheckIn = () => {
               Daily checkin rewards
             </h1>
             <p className='text-[14px] leading-[24px]'>
-             Accrue $MEGADOGS tokens for logging into the game daily and maintain consistency for reward streaks!
+             Accrue $MCATS tokens for logging into the game daily and maintain consistency for reward streaks!
             </p>
           </div>
   
