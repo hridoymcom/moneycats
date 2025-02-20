@@ -177,7 +177,7 @@ const AdRewardComponent = () => {
     }
 
     try {
-      await window.show_8846433();
+      await window.show_8978173();
       handleAdCompletion();
     } catch (error) {
       console.error("Error showing ad:", error);
@@ -241,7 +241,7 @@ const AdRewardComponent = () => {
             Watch Ads & Earn
           </h1>
           <span className="flex text-secondary items-center w-fit text-[15px]">
-            +{task.bonus} $MEGADOGS
+            +{task.bonus} $MCATS
           </span>
         </div>
         <p className="text-xs text-gray-400 mt-1">
