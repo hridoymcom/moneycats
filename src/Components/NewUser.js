@@ -402,11 +402,11 @@ const NewUser = ({setChecker}) => {
     <div className='w-full flex flex-col space-y-5 items-center'>
   
       <h2 className='font-bold text-[30px] text-center w-full'>
-        {premium ? 'You are the best' : 'Welcome to MEGADOGSs'}
+        {premium ? 'You are the best' : 'Welcome to $MCATS'}
       </h2>
   
       <p className='text-[16px] font-semibold pb-14'>
-        Here is your $MEGADOGS rewards
+        Here is your $MCATS rewards
       </p>
   
       <div className={``}>
@@ -427,7 +427,7 @@ const NewUser = ({setChecker}) => {
       </p>
   
       <p className='text-[16px] !mt-0'>
-      $MEGADOGS
+      $MCATS
       </p>
   
   
@@ -476,7 +476,7 @@ Daily Checkin
     </p>
 
     <p className='text-[16px] text-white !mt-1'>
-  +{formatNumber(checkinPoint)} $MEGADOGS
+  +{formatNumber(checkinPoint)} $MCATS
     </p>
 
     <div className={``}>
