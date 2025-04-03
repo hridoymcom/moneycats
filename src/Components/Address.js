@@ -43,6 +43,7 @@ export const Address = () => {
   
   
     const clearCache = () => {
+      console.log("clearing all data");
       // Clear Local Storage
       localStorage.clear();
   
