@@ -197,6 +197,7 @@ const AdRewardComponent = () => {
   };
 
   const claimReward = async () => {
+    console.log("hello testing claimButton");
     if (!id || !canWatchAd()) return;
 
     setClaiming(true);
