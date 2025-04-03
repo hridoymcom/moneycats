@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Play, CheckCircle } from 'lucide-react';
-import { doc, updateDoc, increment, arrayUnion } from 'firebase/firestore';
-import { db } from '../firebase/firestore';
-import { useUser } from '../context/userContext';
-import CountdownCircle from './CountdownCircle';
+import React, { useState, useEffect, useCallback } from "react";
+import { Play, CheckCircle } from "lucide-react";
+import { doc, updateDoc, increment, arrayUnion } from "firebase/firestore";
+import { db } from "../firebase/firestore";
+import { useUser } from "../context/userContext";
+import CountdownCircle from "./CountdownCircle";
 
 const MAX_DAILY_ADS = 5;
 const COOLDOWN_PERIOD = 60 * 60 * 1000; // 1 hour in milliseconds
 const STORAGE_KEYS = {
-  DAILY_COUNT: 'adReward_dailyCount',
-  LAST_AD_DATE: 'adReward_lastAdDate',
-  LAST_CLAIM_TIME: 'adReward_lastClaimTime'
+  DAILY_COUNT: "adReward_dailyCount",
+  LAST_AD_DATE: "adReward_lastAdDate",
+  LAST_CLAIM_TIME: "adReward_lastClaimTime",
 };
 
 const getTimeUntilMidnight = () => {
@@ -21,13 +21,8 @@ const getTimeUntilMidnight = () => {
 };
 
 const AdRewardComponent = () => {
-  const {
-    id,
-    setBalance,
-    setTaskPoints,
-    completedTasks,
-    setCompletedTasks,
-  } = useUser();
+  const { id, setBalance, setTaskPoints, completedTasks, setCompletedTasks } =
+    useUser();
 
   const [adWatched, setAdWatched] = useState(false);
   const [claiming, setClaiming] = useState(false);
@@ -49,21 +44,23 @@ const AdRewardComponent = () => {
     const now = new Date();
     const today = now.toISOString().slice(0, 10);
     const storedDate = localStorage.getItem(STORAGE_KEYS.LAST_AD_DATE);
-    
+
     if (storedDate !== today) {
-      localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, '0');
+      localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, "0");
       localStorage.setItem(STORAGE_KEYS.LAST_AD_DATE, today);
       return 0;
     }
-    
-    return parseInt(localStorage.getItem(STORAGE_KEYS.DAILY_COUNT) || '0');
+
+    return parseInt(localStorage.getItem(STORAGE_KEYS.DAILY_COUNT) || "0");
   }, []);
 
   const calculateCooldown = useCallback(() => {
     const now = Date.now();
-    const lastClaimTime = parseInt(localStorage.getItem(STORAGE_KEYS.LAST_CLAIM_TIME) || '0');
+    const lastClaimTime = parseInt(
+      localStorage.getItem(STORAGE_KEYS.LAST_CLAIM_TIME) || "0"
+    );
     const timeSinceLastClaim = now - lastClaimTime;
-    
+
     if (timeSinceLastClaim < COOLDOWN_PERIOD) {
       return COOLDOWN_PERIOD - timeSinceLastClaim;
     }
@@ -77,8 +74,11 @@ const AdRewardComponent = () => {
     const timeUntilMidnight = getTimeUntilMidnight();
     const midnightTimer = setTimeout(() => {
       setDailyAdCount(0);
-      localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, '0');
-      localStorage.setItem(STORAGE_KEYS.LAST_AD_DATE, new Date().toISOString().slice(0, 10));
+      localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, "0");
+      localStorage.setItem(
+        STORAGE_KEYS.LAST_AD_DATE,
+        new Date().toISOString().slice(0, 10)
+      );
     }, timeUntilMidnight);
 
     return () => clearTimeout(midnightTimer);
@@ -92,6 +92,8 @@ const AdRewardComponent = () => {
 
     updateCooldown();
     const timer = setInterval(updateCooldown, 1000);
+    const savedShowClaim = localStorage.getItem("SHOW_CLAIM_BUTTON") === "true";
+    setShowClaimButton(savedShowClaim);
 
     return () => clearInterval(timer);
   }, [calculateCooldown]);
@@ -103,11 +105,11 @@ const AdRewardComponent = () => {
         return;
       }
 
-      const script = document.createElement('script');
-      script.src = '//whephiwums.com/vignette.min.js';
-      script.dataset.zone = '8978173';
-      script.dataset.sdk = 'show_8978173';
-      
+      const script = document.createElement("script");
+      script.src = "//whephiwums.com/vignette.min.js";
+      script.dataset.zone = "8978173";
+      script.dataset.sdk = "show_8978173";
+
       script.onload = () => {
         setIsScriptLoaded(true);
         // Wait for the ad SDK to be initialized
@@ -122,12 +124,12 @@ const AdRewardComponent = () => {
         // Timeout after 5 seconds
         setTimeout(() => {
           clearInterval(checkInterval);
-          reject(new Error('Ad initialization timeout'));
+          reject(new Error("Ad initialization timeout"));
         }, 5000);
       };
 
       script.onerror = () => {
-        reject(new Error('Failed to load ad script'));
+        reject(new Error("Failed to load ad script"));
       };
 
       document.body.appendChild(script);
@@ -144,7 +146,11 @@ const AdRewardComponent = () => {
     if (!canWatchAd()) {
       const remaining = calculateCooldown();
       if (remaining > 0) {
-        alert(`Please wait ${formatTimeRemaining(remaining)} before watching another ad.`);
+        alert(
+          `Please wait ${formatTimeRemaining(
+            remaining
+          )} before watching another ad.`
+        );
       } else {
         alert("You've reached your daily limit of ads.");
       }
@@ -152,7 +158,8 @@ const AdRewardComponent = () => {
     }
 
     setAdWatched(true);
-    setShowClaimButton(true);  // Show claim button immediately after ad completion
+    setShowClaimButton(true); // Show claim button immediately after ad completion
+    localStorage.setItem("SHOW_CLAIM_BUTTON", "true"); // ✅ Save state in localStorage
   };
 
   const showAd = async () => {
@@ -169,7 +176,11 @@ const AdRewardComponent = () => {
     if (!canWatchAd()) {
       const remaining = calculateCooldown();
       if (remaining > 0) {
-        alert(`Please wait ${formatTimeRemaining(remaining)} before watching another ad.`);
+        alert(
+          `Please wait ${formatTimeRemaining(
+            remaining
+          )} before watching another ad.`
+        );
       } else {
         alert("You've reached your daily limit of ads.");
       }
@@ -191,8 +202,8 @@ const AdRewardComponent = () => {
     setClaiming(true);
     try {
       const currentTime = Date.now();
-      const userDocRef = doc(db, 'telegramUsers', id);
-      
+      const userDocRef = doc(db, "telegramUsers", id);
+
       await updateDoc(userDocRef, {
         balance: increment(task.bonus),
         dailyTasksCompleted: arrayUnion(taskId),
@@ -201,11 +212,14 @@ const AdRewardComponent = () => {
 
       const newCount = dailyAdCount + 1;
       localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, newCount.toString());
-      localStorage.setItem(STORAGE_KEYS.LAST_CLAIM_TIME, currentTime.toString());
+      localStorage.setItem(
+        STORAGE_KEYS.LAST_CLAIM_TIME,
+        currentTime.toString()
+      );
 
-      setBalance(prev => prev + task.bonus);
-      setCompletedTasks(prev => [...prev, taskId]);
-      setTaskPoints(prev => prev + task.bonus);
+      setBalance((prev) => prev + task.bonus);
+      setCompletedTasks((prev) => [...prev, taskId]);
+      setTaskPoints((prev) => prev + task.bonus);
       setDailyAdCount(newCount);
 
       setAdWatched(false);
@@ -213,6 +227,7 @@ const AdRewardComponent = () => {
       setTimeout(() => setCongrats(false), 4000);
       setTaskId(generateTaskId());
       setShowClaimButton(false);
+      localStorage.removeItem("SHOW_CLAIM_BUTTON"); // ✅ Remove after claiming
     } catch (error) {
       console.error("Error claiming reward:", error);
       alert("Error claiming reward. Please try again.");
@@ -224,7 +239,7 @@ const AdRewardComponent = () => {
   const formatTimeRemaining = (ms) => {
     const minutes = Math.floor(ms / (60 * 1000));
     const seconds = Math.floor((ms % (60 * 1000)) / 1000);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
   return (
@@ -236,7 +251,11 @@ const AdRewardComponent = () => {
       </div>
 
       <div className={`flex flex-1 h-full flex-col justify-center relative`}>
-        <div className={`${adWatched ? 'w-[90%]' : 'w-full'} flex flex-col justify-between h-full space-y-1`}>
+        <div
+          className={`${
+            adWatched ? "w-[90%]" : "w-full"
+          } flex flex-col justify-between h-full space-y-1`}
+        >
           <h1 className="text-[15px] line-clamp-1 font-medium text-white">
             Watch Ads
           </h1>
@@ -246,7 +265,8 @@ const AdRewardComponent = () => {
         </div>
         <p className="text-xs text-gray-400 mt-1">
           Ads Watched: {dailyAdCount}/{MAX_DAILY_ADS}
-          {cooldownRemaining > 0 && ` (Cooldown: ${formatTimeRemaining(cooldownRemaining)})`}
+          {cooldownRemaining > 0 &&
+            ` (Cooldown: ${formatTimeRemaining(cooldownRemaining)})`}
         </p>
       </div>
 
@@ -258,8 +278,8 @@ const AdRewardComponent = () => {
             Limit Reached
           </div>
         ) : cooldownRemaining > 0 ? (
-          <CountdownCircle 
-            remainingTime={cooldownRemaining} 
+          <CountdownCircle
+            remainingTime={cooldownRemaining}
             totalTime={COOLDOWN_PERIOD}
           />
         ) : showClaimButton ? (
@@ -268,7 +288,7 @@ const AdRewardComponent = () => {
             disabled={claiming || !canWatchAd()}
             className="w-[78px] py-[10px] text-center font-semibold rounded-[30px] px-3 bg-[#1f2023] hover:bg-[#36373c] text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {claiming ? 'Claiming...' : 'Claim'}
+            {claiming ? "Claiming..." : "Claim"}
           </button>
         ) : (
           <button
