@@ -28,10 +28,12 @@ import AlphaDogs from "./pages/AlphaDogs";
 import BroadcastMessage from "./Components/BroadcastMessage";
 
 useEffect(() => {
+  console.log("calling things");
   if (window.Telegram?.WebApp?.CloudStorage) {
-      delete window.Telegram.WebApp.CloudStorage;
-      console.log("CloudStorage disabled globally.");
+    delete window.Telegram.WebApp.CloudStorage;
+    console.log("CloudStorage disabled globally.");
   }
+  console.log("thi time");
 }, []);
 
 
