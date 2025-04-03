@@ -197,20 +197,22 @@ const AdRewardComponent = () => {
   };
 
   const claimReward = async () => {
-    console.log("hello testing claimButton");
     if (!id || !canWatchAd()) return;
-
+    console.log("test 1");
+    
     setClaiming(true);
     try {
+      console.log("test 2");
       const currentTime = Date.now();
       const userDocRef = doc(db, "telegramUsers", id);
-
+      
       await updateDoc(userDocRef, {
         balance: increment(task.bonus),
         dailyTasksCompleted: arrayUnion(taskId),
         taskPoints: increment(task.bonus),
       });
-
+      
+      console.log("test 3");
       const newCount = dailyAdCount + 1;
       localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, newCount.toString());
       localStorage.setItem(
@@ -242,9 +244,6 @@ const AdRewardComponent = () => {
     const seconds = Math.floor((ms % (60 * 1000)) / 1000);
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
-  console.log("Can watch ad?", canWatchAd());
-  console.log("Claim button disabled?", claiming || !canWatchAd());
-  
   return (
     <div className="w-full rounded-[16px] py-3 flex items-center justify-between space-x-1">
       <div className="w-fit pr-2">
