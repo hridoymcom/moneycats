@@ -197,12 +197,10 @@ const AdRewardComponent = () => {
   };
 
   const claimReward = async () => {
-    console.log(id);
     if (!id || !canWatchAd()) return;
     
     setClaiming(true);
     try {
-      console.log("test 2");
       const currentTime = Date.now();
       const userDocRef = doc(db, "telegramUsers", id);
       
@@ -212,7 +210,6 @@ const AdRewardComponent = () => {
         taskPoints: increment(task.bonus),
       });
       
-      console.log("test 3");
       const newCount = dailyAdCount + 1;
       localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, newCount.toString());
       localStorage.setItem(
