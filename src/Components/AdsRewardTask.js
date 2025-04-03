@@ -238,7 +238,7 @@ const AdRewardComponent = () => {
       <div className={`flex flex-1 h-full flex-col justify-center relative`}>
         <div className={`${adWatched ? 'w-[90%]' : 'w-full'} flex flex-col justify-between h-full space-y-1`}>
           <h1 className="text-[15px] line-clamp-1 font-medium text-white">
-            Watch Ads & Earn more money
+            Watch Ads
           </h1>
           <span className="flex text-secondary items-center w-fit text-[15px]">
             +{task.bonus} $MCATS
@@ -276,7 +276,7 @@ const AdRewardComponent = () => {
             disabled={!canWatchAd()}
             className="w-[78px] py-[10px] text-center font-semibold rounded-[30px] px-3 bg-[#1f2023] hover:bg-[#36373c] text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Start the ads
+            Start
           </button>
         )}
       </div>
