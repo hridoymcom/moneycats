@@ -276,7 +276,7 @@ const AdRewardComponent = () => {
             disabled={!canWatchAd()}
             className="w-[78px] py-[10px] text-center font-semibold rounded-[30px] px-3 bg-[#1f2023] hover:bg-[#36373c] text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Start
+            Start the ads
           </button>
         )}
       </div>
