@@ -238,7 +238,7 @@ const AdRewardComponent = () => {
       <div className={`flex flex-1 h-full flex-col justify-center relative`}>
         <div className={`${adWatched ? 'w-[90%]' : 'w-full'} flex flex-col justify-between h-full space-y-1`}>
           <h1 className="text-[15px] line-clamp-1 font-medium text-white">
-            Watch Ads & Earn
+            Watch Ads & Earn more money
           </h1>
           <span className="flex text-secondary items-center w-fit text-[15px]">
             +{task.bonus} $MCATS
