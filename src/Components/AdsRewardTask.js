@@ -241,7 +241,9 @@ const AdRewardComponent = () => {
     const seconds = Math.floor((ms % (60 * 1000)) / 1000);
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
-
+  console.log("Can watch ad?", canWatchAd());
+  console.log("Claim button disabled?", claiming || !canWatchAd());
+  
   return (
     <div className="w-full rounded-[16px] py-3 flex items-center justify-between space-x-1">
       <div className="w-fit pr-2">
