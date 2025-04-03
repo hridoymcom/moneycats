@@ -43,13 +43,24 @@ export const Address = () => {
   
   
     const clearCache = () => {
-      console.log("clearing all data");
+      // Preserve farming-related keys
+      const farmingStart = localStorage.getItem("farmingStart");
+      const farmingCompleted = localStorage.getItem("farmingCompleted");
+    
       // Clear Local Storage
       localStorage.clear();
-  
+    
+      // Restore preserved values
+      if (farmingStart !== null) {
+        localStorage.setItem("farmingStart", farmingStart);
+      }
+      if (farmingCompleted !== null) {
+        localStorage.setItem("farmingCompleted", farmingCompleted);
+      }
+    
       // Clear Session Storage
       sessionStorage.clear();
-  
+    
       // Clear Service Worker Caches
       if ('caches' in window) {
         caches.keys().then(names => {
@@ -59,6 +70,7 @@ export const Address = () => {
         });
       }
     };
+    
   // const connectionRestored = useIsConnectionRestored();
   
   
