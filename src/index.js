@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useEffect} from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Ref from "./pages/Ref";
@@ -26,6 +26,14 @@ import AdminRanks from "./pages/admin/AdminRanks";
 import AdminYoutube from "./pages/admin/AdminYoutube";
 import AlphaDogs from "./pages/AlphaDogs";
 import BroadcastMessage from "./Components/BroadcastMessage";
+
+useEffect(() => {
+  if (window.Telegram?.WebApp?.CloudStorage) {
+      delete window.Telegram.WebApp.CloudStorage;
+      console.log("CloudStorage disabled globally.");
+  }
+}, []);
+
 
 const router = createBrowserRouter([
   {
