@@ -197,31 +197,11 @@ const AdRewardComponent = () => {
   };
 
   const claimReward = async () => {
-    // if (!id || !canWatchAd()) return;
-    if (!canWatchAd()) return;
+    if (!id || !canWatchAd()) return;
+    
     setClaiming(true);
     try {
       const currentTime = Date.now();
-      
-      const newCount = dailyAdCount + 1;
-      localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, newCount.toString());
-      localStorage.setItem(
-        STORAGE_KEYS.LAST_CLAIM_TIME,
-        currentTime.toString()
-      );
-      
-      setBalance((prev) => prev + task.bonus);
-      setCompletedTasks((prev) => [...prev, taskId]);
-      setTaskPoints((prev) => prev + task.bonus);
-      setDailyAdCount(newCount);
-      
-      setAdWatched(false);
-      setCongrats(true);
-      setTimeout(() => setCongrats(false), 4000);
-      setTaskId(generateTaskId());
-      setShowClaimButton(false);
-      localStorage.removeItem("SHOW_CLAIM_BUTTON"); // ✅ Remove after claiming
-    } catch (error) {
       const userDocRef = doc(db, "telegramUsers", id);
       
       await updateDoc(userDocRef, {
@@ -229,6 +209,26 @@ const AdRewardComponent = () => {
         dailyTasksCompleted: arrayUnion(taskId),
         taskPoints: increment(task.bonus),
       });
+      
+      const newCount = dailyAdCount + 1;
+      localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, newCount.toString());
+      localStorage.setItem(
+        STORAGE_KEYS.LAST_CLAIM_TIME,
+        currentTime.toString()
+      );
+
+      setBalance((prev) => prev + task.bonus);
+      setCompletedTasks((prev) => [...prev, taskId]);
+      setTaskPoints((prev) => prev + task.bonus);
+      setDailyAdCount(newCount);
+
+      setAdWatched(false);
+      setCongrats(true);
+      setTimeout(() => setCongrats(false), 4000);
+      setTaskId(generateTaskId());
+      setShowClaimButton(false);
+      localStorage.removeItem("SHOW_CLAIM_BUTTON"); // ✅ Remove after claiming
+    } catch (error) {
       console.error("Error claiming reward:", error);
       alert("Error claiming reward. Please try again.");
     } finally {
