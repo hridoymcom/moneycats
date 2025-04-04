@@ -3,7 +3,7 @@ body{
   /* background: linear-gradient(to top, #000, #181100); */
   /* background: #150c17; */
   background-color: #000;
-  color: red;
+  color: #fff;
   max-height: 100vh;
   touch-action: none; /* Prevent touch actions */
   background-repeat: no-repeat;
@@ -95,7 +95,7 @@ p, em{
 .taskbg{
   background: linear-gradient(to top, #000, #181100);
   background-color: #180000;
-  color: red;
+  color: #fff;
   max-height: 100vh;
   touch-action: none; /* Prevent touch actions */
   background-repeat: no-repeat;
@@ -932,7 +932,7 @@ background: #ffbfbf29;
 .white-orbit {
 	width: 60px;
 	height: 60px;
-  border: 2px solid redfff;
+  border: 2px solid #ffffff;
   -webkit-animation: spin3D 10s linear 0s infinite;
 }
 
