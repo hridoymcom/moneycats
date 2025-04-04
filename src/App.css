@@ -95,7 +95,7 @@ p, em{
 .taskbg{
   background: linear-gradient(to top, #000, #181100);
   background-color: #180000;
-  color: #fff;
+  color: red;
   max-height: 100vh;
   touch-action: none; /* Prevent touch actions */
   background-repeat: no-repeat;
@@ -932,7 +932,7 @@ background: #ffbfbf29;
 .white-orbit {
 	width: 60px;
 	height: 60px;
-  border: 2px solid #ffffff;
+  border: 2px solid redfff;
   -webkit-animation: spin3D 10s linear 0s infinite;
 }
 
