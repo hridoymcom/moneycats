@@ -114,6 +114,9 @@ const CryptoFarming = () => {
     const farmingDone = localStorage.getItem("farmingCompleted");
 
     const storedElapsedTimer = localStorage.getItem("elapsedTime");
+    console.log(farmingStart);
+    console.log(farmingDone);
+    console.log(storedElapsedTimer);
     if (storedElapsedTimer) {
       setElapsedTimer(parseInt(storedElapsedTimer));
     }
