@@ -205,11 +205,11 @@ const AdRewardComponent = () => {
       const currentTime = Date.now();
       const userDocRef = doc(db, "telegramUsers", id);
       
-      await updateDoc(userDocRef, {
-        balance: increment(task.bonus),
-        dailyTasksCompleted: arrayUnion(taskId),
-        taskPoints: increment(task.bonus),
-      });
+      // await updateDoc(userDocRef, {
+      //   balance: increment(task.bonus),
+      //   dailyTasksCompleted: arrayUnion(taskId),
+      //   taskPoints: increment(task.bonus),
+      // });
       
       const newCount = dailyAdCount + 1;
       localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, newCount.toString());
