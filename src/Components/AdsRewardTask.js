@@ -199,7 +199,7 @@ const AdRewardComponent = () => {
   const claimReward = async () => {
     // if (!id || !canWatchAd()) return;
     if (!canWatchAd()) return;
-    
+    console.log("hi");
     setClaiming(true);
     try {
       const currentTime = Date.now();
