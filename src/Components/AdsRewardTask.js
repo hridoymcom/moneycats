@@ -257,7 +257,7 @@ const AdRewardComponent = () => {
           } flex flex-col justify-between h-full space-y-1`}
         >
           <h1 className="text-[15px] line-clamp-1 font-medium text-white">
-            Watch Ads yes
+            Watch Ads and win
           </h1>
           <span className="flex text-secondary items-center w-fit text-[15px]">
             +{task.bonus} $MCATS
