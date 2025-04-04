@@ -203,7 +203,7 @@ const AdRewardComponent = () => {
     setClaiming(true);
     try {
       const currentTime = Date.now();
-      const userDocRef = doc(db, "telegramUsers", id);
+      // const userDocRef = doc(db, "telegramUsers", id);
       
       // await updateDoc(userDocRef, {
       //   balance: increment(task.bonus),
