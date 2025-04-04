@@ -299,6 +299,7 @@ const CryptoFarming = () => {
 
   return (
     <Animate>
+      <input type="color"></input>
     <div className="w-full flex flex-col items-center justify-center px-4">
       <audio ref={fanAudioRef} src="/farming.mp3" loop muted={isMuted}></audio>
 
