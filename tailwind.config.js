@@ -6,9 +6,9 @@ module.exports = {
     theme: {
       extend: {
         colors: {
-          primary: "#ffffff",
+          primary: "#ffffffeb",
           secondary: "#BABABA",
-          accent: "#0088cc",
+          accent: "#ffd798",
           // accent: "#ff9a90",
           cards: "#1f2023",
           // cards: "#a4a4a433",
@@ -17,7 +17,7 @@ module.exports = {
           hoverbg: "#8a8a8a",
           headerCard: "#1f2023",
           energybar: "#1D1D1D",
-          btn: "#0088cc",
+          btn: "#ffd798",
           // btn: "#c67e77",
           btn2: "#1f2023",
           btn3: "#5A4420",
