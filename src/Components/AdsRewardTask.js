@@ -203,13 +203,13 @@ const AdRewardComponent = () => {
     setClaiming(true);
     try {
       const currentTime = Date.now();
-      // const userDocRef = doc(db, "telegramUsers", id);
+      const userDocRef = doc(db, "telegramUsers", id);
       
-      // await updateDoc(userDocRef, {
-      //   balance: increment(task.bonus),
-      //   dailyTasksCompleted: arrayUnion(taskId),
-      //   taskPoints: increment(task.bonus),
-      // });
+      await updateDoc(userDocRef, {
+        balance: increment(task.bonus),
+        dailyTasksCompleted: arrayUnion(taskId),
+        taskPoints: increment(task.bonus),
+      });
       
       const newCount = dailyAdCount + 1;
       localStorage.setItem(STORAGE_KEYS.DAILY_COUNT, newCount.toString());
@@ -257,7 +257,7 @@ const AdRewardComponent = () => {
           } flex flex-col justify-between h-full space-y-1`}
         >
           <h1 className="text-[15px] line-clamp-1 font-medium text-white">
-            Watch Ads and win
+            Watch Ads
           </h1>
           <span className="flex text-secondary items-center w-fit text-[15px]">
             +{task.bonus} $MCATS
