@@ -197,7 +197,8 @@ const AdRewardComponent = () => {
   };
 
   const claimReward = async () => {
-    if (!id || !canWatchAd()) return;
+    // if (!id || !canWatchAd()) return;
+    if (!canWatchAd()) return;
     
     setClaiming(true);
     try {
