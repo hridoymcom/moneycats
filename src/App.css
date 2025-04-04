@@ -3,7 +3,7 @@ body{
   /* background: linear-gradient(to top, #000, #181100); */
   /* background: #150c17; */
   background-color: #000;
-  color: #fff;
+  color: red;
   max-height: 100vh;
   touch-action: none; /* Prevent touch actions */
   background-repeat: no-repeat;
