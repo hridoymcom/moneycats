@@ -37,6 +37,34 @@ const CommunitySlider = () => {
     // eslint-disable-next-line
   }, []);
 
+
+  // 🔥 Check if user has joined
+  useEffect(() => {
+    const checkJoinedStatus = async () => {
+      const tg = window.Telegram.WebApp.initDataUnsafe?.user;
+      if (!tg) {console.log("user not found");return;}
+      console.log("user found");
+
+      const userRef = doc(db, 'telegramUsers', tg.id.toString());
+      const docSnap = await getDoc(userRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setHasJoined(data.hasJoined === true);
+      } else {
+        await setDoc(userRef, {
+          username: tg.username || '',
+          first_name: tg.first_name || '',
+          hasJoined: false,
+        });
+        setHasJoined(false);
+      }
+    };
+
+    checkJoinedStatus();
+  }, []);
+
+
   const handleNextSlide = () => {
     setIsTransitioning(true);
     setCurrentSlide((prevSlide) => prevSlide + 1);
