@@ -87,28 +87,22 @@ const CommunitySlider = () => {
     }
   }, [currentSlide, isTransitioning]);
 
-  // Check Telegram user join status
   useEffect(() => {
     const checkJoinedStatus = async () => {
-      const tgUser = window?.Telegram?.WebApp?.initDataUnsafe?.user;
-      if (!tgUser) {
+      if (typeof window === 'undefined' || !window?.Telegram?.WebApp?.initDataUnsafe?.user) {
         console.log('Telegram user not found');
         return;
       }
-
+  
+      const tgUser = window.Telegram.WebApp.initDataUnsafe.user;
+  
       try {
         const userRef = doc(db, 'telegramUsers', tgUser.id.toString());
         const docSnap = await getDoc(userRef);
-
+  
         if (docSnap.exists()) {
           const userData = docSnap.data();
-          if (userData.hasJoined) {
-            setHasJoined(true);
-            alert('✅ You have already joined the Telegram community!');
-          } else {
-            setHasJoined(false);
-            alert('❌ You have not joined the Telegram community yet.');
-          }
+          setHasJoined(userData.hasJoined);
         } else {
           await setDoc(userRef, {
             username: tgUser.username || '',
@@ -116,16 +110,15 @@ const CommunitySlider = () => {
             hasJoined: false,
           });
           setHasJoined(false);
-          alert('❌ You have not joined the Telegram community yet.');
         }
       } catch (err) {
         console.error('Error checking join status:', err);
       }
     };
-
+  
     checkJoinedStatus();
   }, []);
-
+  
   return (
     <div className="relative w-full max-w-xl mx-auto overflow-hidden">
       <div
