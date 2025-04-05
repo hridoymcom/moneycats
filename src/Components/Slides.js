@@ -134,22 +134,25 @@ const CommunitySlider = () => {
               <p className="pb-2 text-[14px]">{slide.description}</p>
 
               {index === 0 ? (
-                <NavLink
-                  to={slide.link}
-                  className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
-                >
-                  Claim
-                </NavLink>
-              ) : (
-                <a
-                  href={slide.link}
-                  className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Join
-                </a>
-              )}
+  <NavLink
+    to={slide.link}
+    className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
+  >
+    Claim
+  </NavLink>
+) : (
+  !hasJoined && (
+    <a
+      href={slide.link}
+      className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Join
+    </a>
+  )
+)}
+
             </div>
           </div>
         ))}
