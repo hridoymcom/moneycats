@@ -91,7 +91,9 @@ const CommunitySlider = () => {
   useEffect(() => {
     const checkJoinedStatus = async () => {
       const tg = window.Telegram.WebApp.initDataUnsafe?.user;
+      console.log("TESTING 1: "+tg);
       if (!tg) return;
+      console.log("TESTING 2: "+tg);
 
       const userRef = doc(db, 'telegramUsers', tg.id.toString());
       const docSnap = await getDoc(userRef);
@@ -151,7 +153,7 @@ const CommunitySlider = () => {
                     onClick={handleJoinClick}
                     className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
                   >
-                    Join
+                    Joining
                   </button>
                 )
               )}
