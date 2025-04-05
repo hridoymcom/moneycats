@@ -22,8 +22,8 @@ const CommunitySlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [setHasJoined] = useState(null); // fixed
-
+  const [hasJoined, setHasJoined] = useState(null); // fixed
+  console.log(hasJoined);
   const handleNextSlide = useCallback(() => {
     setIsTransitioning(true);
     setCurrentSlide((prevSlide) => prevSlide + 1);
