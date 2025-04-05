@@ -15,6 +15,7 @@ const slides = [
 ];
 
 const CommunitySlider = () => {
+  const [hasJoined, setHasJoined] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideInterval = useRef(null);
   const touchStartX = useRef(0);
@@ -43,7 +44,7 @@ const CommunitySlider = () => {
     const checkJoinedStatus = async () => {
       const tg = window.Telegram.WebApp.initDataUnsafe?.user;
       if (!tg) {console.log("user not found");return;}
-      console.log("user found");
+      console.log("user found",tg);
 
       const userRef = doc(db, 'telegramUsers', tg.id.toString());
       const docSnap = await getDoc(userRef);
