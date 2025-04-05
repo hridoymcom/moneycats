@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from "../firebase/firestore";
 
 const slides = [
   {
@@ -20,6 +22,7 @@ const CommunitySlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [hasJoined, setHasJoined] = useState(null); // for showing alert
 
   const startSlideInterval = () => {
     slideInterval.current = setInterval(() => {
@@ -34,7 +37,6 @@ const CommunitySlider = () => {
   useEffect(() => {
     startSlideInterval();
     return () => stopSlideInterval();
-    // eslint-disable-next-line
   }, []);
 
   const handleNextSlide = () => {
@@ -80,47 +82,81 @@ const CommunitySlider = () => {
         } else if (currentSlide < 0) {
           setCurrentSlide(slides.length - 1);
         }
-      }, 500); // duration of the transition
+      }, 500);
       return () => clearTimeout(transitionEnd);
     }
   }, [currentSlide, isTransitioning]);
+
+  // Check Telegram user join status
+  useEffect(() => {
+    const checkJoinedStatus = async () => {
+      const tgUser = window.Telegram?.WebApp?.initDataUnsafe?.user;
+      if (!tgUser) {
+        console.log('Telegram user not found');
+        return;
+      }
+
+      try {
+        const userRef = doc(db, 'telegramUsers', tgUser.id.toString());
+        const docSnap = await getDoc(userRef);
+
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          if (userData.hasJoined) {
+            setHasJoined(true);
+            alert('✅ You have already joined the Telegram community!');
+          } else {
+            setHasJoined(false);
+            alert('❌ You have not joined the Telegram community yet.');
+          }
+        } else {
+          await setDoc(userRef, {
+            username: tgUser.username || '',
+            first_name: tgUser.first_name || '',
+            hasJoined: false,
+          });
+          setHasJoined(false);
+          alert('❌ You have not joined the Telegram community yet.');
+        }
+      } catch (err) {
+        console.error('Error checking join status:', err);
+      }
+    };
+
+    checkJoinedStatus();
+  }, []);
 
   return (
     <div className="relative w-full max-w-xl mx-auto overflow-hidden">
       <div
         className={`flex ${isTransitioning ? 'transition-transform duration-500' : ''}`}
-        style={{ transform: `translateX(-${(currentSlide % slides.length) * 90}%)` }} // adjust 100% to 90% for partial view
+        style={{ transform: `translateX(-${(currentSlide % slides.length) * 90}%)` }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-
-
         {slides.concat(slides[0]).map((slide, index) => (
-          <div key={index} className="min-w-[90%]"> {/* adjust 100% to 90% for partial view */}
+          <div key={index} className="min-w-[90%]">
             <div className="bg-[#17181A] mr-4 rounded-[12px] py-6 px-4 flex flex-col">
               <h2 className="font-medium">{slide.title}</h2>
               <p className="pb-2 text-[14px]">{slide.description}</p>
 
               {index === 0 ? (
-              <NavLink
-              to={slide.link}
-              className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
-            >
-              Claim
-            </NavLink>
+                <NavLink
+                  to={slide.link}
+                  className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
+                >
+                  Claim
+                </NavLink>
               ) : (
                 <a
-                href={slide.link}
-                className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Join
-              </a>
+                  href={slide.link}
+                  className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Join
+                </a>
               )}
-
-
-
             </div>
           </div>
         ))}
