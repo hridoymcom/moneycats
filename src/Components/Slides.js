@@ -22,8 +22,8 @@ const CommunitySlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [hasJoined, setHasJoined] = useState(null); // fixed
-  console.log(hasJoined);
+  const [hasJoined, setHasJoined] = useState(null);
+
   const handleNextSlide = useCallback(() => {
     setIsTransitioning(true);
     setCurrentSlide((prevSlide) => prevSlide + 1);
@@ -119,6 +119,24 @@ const CommunitySlider = () => {
     checkJoinedStatus();
   }, []);
 
+  const handleJoinClick = async (link) => {
+    if (typeof window === 'undefined' || !window?.Telegram?.WebApp?.initDataUnsafe?.user) {
+      console.log('Telegram user not found');
+      return;
+    }
+
+    const tgUser = window.Telegram.WebApp.initDataUnsafe.user;
+    const userRef = doc(db, 'telegramUsers', tgUser.id.toString());
+
+    try {
+      await setDoc(userRef, { hasJoined: true }, { merge: true });
+      setHasJoined(true);
+      window.open(link, '_blank');
+    } catch (err) {
+      console.error('Error updating join status:', err);
+    }
+  };
+
   return (
     <div className="relative w-full max-w-xl mx-auto overflow-hidden">
       <div
@@ -134,25 +152,22 @@ const CommunitySlider = () => {
               <p className="pb-2 text-[14px]">{slide.description}</p>
 
               {index === 0 ? (
-  <NavLink
-    to={slide.link}
-    className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
-  >
-    Claim
-  </NavLink>
-) : (
-  !hasJoined && (
-    <a
-      href={slide.link}
-      className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Join
-    </a>
-  )
-)}
-
+                <NavLink
+                  to={slide.link}
+                  className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
+                >
+                  Claim
+                </NavLink>
+              ) : (
+                !hasJoined && (
+                  <button
+                    onClick={() => handleJoinClick(slide.link)}
+                    className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
+                  >
+                    Join
+                  </button>
+                )
+              )}
             </div>
           </div>
         ))}
