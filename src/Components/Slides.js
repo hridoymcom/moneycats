@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from '../firebase/firestore'; // <-- adjust this path based on your project structure
 
 const slides = [
   {
@@ -17,7 +15,6 @@ const slides = [
 ];
 
 const CommunitySlider = () => {
-  const [hasJoined, setHasJoined] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideInterval = useRef(null);
   const touchStartX = useRef(0);
@@ -39,34 +36,6 @@ const CommunitySlider = () => {
     return () => stopSlideInterval();
     // eslint-disable-next-line
   }, []);
-
-
-  // 🔥 Check if user has joined
-  useEffect(() => {
-    const checkJoinedStatus = async () => {
-      const tg = window.Telegram.WebApp.initDataUnsafe?.user;
-      if (!tg) {console.log("user not found");return;}
-      console.log("user found",tg);
-
-      const userRef = doc(db, 'telegramUsers', tg.id.toString());
-      const docSnap = await getDoc(userRef);
-
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        setHasJoined(data.hasJoined === true);
-      } else {
-        await setDoc(userRef, {
-          username: tg.username || '',
-          first_name: tg.first_name || '',
-          hasJoined: false,
-        });
-        setHasJoined(false);
-      }
-    };
-
-    checkJoinedStatus();
-  }, []);
-
 
   const handleNextSlide = () => {
     setIsTransitioning(true);
