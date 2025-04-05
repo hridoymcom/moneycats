@@ -90,7 +90,7 @@ const CommunitySlider = () => {
   // Check Telegram user join status
   useEffect(() => {
     const checkJoinedStatus = async () => {
-      const tgUser = window.Telegram?.WebApp?.initDataUnsafe?.user;
+      const tgUser = window?.Telegram?.WebApp?.initDataUnsafe?.user;
       if (!tgUser) {
         console.log('Telegram user not found');
         return;
