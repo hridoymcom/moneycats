@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, useContext } from 'rea
 import { NavLink } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from "../firebase/firestore";
-import { UserContext } from '../context/userContext';
+import { useUser } from '../context/userContext';
 
 const slides = [
   {
@@ -25,7 +25,7 @@ const CommunitySlider = () => {
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [hasJoined, setHasJoined] = useState(null);
-  const { user } = useContext(UserContext);
+  const { user } = useContext(useUser);
 
   const filteredSlides = slides.filter(slide => {
     if (slide.key === 'community') {
