@@ -121,7 +121,7 @@ const CommunitySlider = () => {
 
   const handleJoinClick = async (link) => {
     if (typeof window === 'undefined' || !window?.Telegram?.WebApp?.initDataUnsafe?.user) {
-      console.log('Telegram user not found');
+      alert('Telegram user not found');
       return;
     }
 
