@@ -91,9 +91,8 @@ const CommunitySlider = () => {
   useEffect(() => {
     const checkJoinedStatus = async () => {
       const tg = window.Telegram.WebApp.initDataUnsafe?.user;
-      console.log("TESTING 1: "+tg);
-      if (!tg) return;
-      console.log("TESTING 2: "+tg);
+      if (!tg) {console.log("user not found");return;}
+      console.log("user found");
 
       const userRef = doc(db, 'telegramUsers', tg.id.toString());
       const docSnap = await getDoc(userRef);
@@ -116,8 +115,8 @@ const CommunitySlider = () => {
 
   const handleJoinClick = async () => {
     const tg = window.Telegram.WebApp.initDataUnsafe?.user;
-    if (!tg) return;
-
+    if (!tg) {console.log("user not found");return;}
+    console.log("user found");
     const userRef = doc(db, 'telegramUsers', tg.id.toString());
     await setDoc(userRef, { hasJoined: true }, { merge: true });
     setHasJoined(true);
@@ -153,7 +152,7 @@ const CommunitySlider = () => {
                     onClick={handleJoinClick}
                     className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
                   >
-                    Joining
+                    Join
                   </button>
                 )
               )}
