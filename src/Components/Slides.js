@@ -22,7 +22,7 @@ const CommunitySlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [hasJoined, setHasJoined] = useState(null); // for showing alert
+  const [setHasJoined] = useState(null); // for showing alert
 
   const startSlideInterval = () => {
     slideInterval.current = setInterval(() => {
