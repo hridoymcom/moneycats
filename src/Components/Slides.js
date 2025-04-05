@@ -14,6 +14,7 @@ const slides = [
     title: '$MCATS COMMUNITY',
     description: 'Join MONEY CATS community',
     link: 'https://t.me/MoneyCatsCommunity',
+    key: 'community'
   },
 ];
 
@@ -24,7 +25,14 @@ const CommunitySlider = () => {
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [hasJoined, setHasJoined] = useState(null);
-  const { user } = useContext(UserContext); // get user from context
+  const { user } = useContext(UserContext);
+
+  const filteredSlides = slides.filter(slide => {
+    if (slide.key === 'community') {
+      return !hasJoined;
+    }
+    return true;
+  });
 
   const handleNextSlide = useCallback(() => {
     setIsTransitioning(true);
@@ -79,15 +87,15 @@ const CommunitySlider = () => {
     if (isTransitioning) {
       const transitionEnd = setTimeout(() => {
         setIsTransitioning(false);
-        if (currentSlide >= slides.length) {
+        if (currentSlide >= filteredSlides.length) {
           setCurrentSlide(0);
         } else if (currentSlide < 0) {
-          setCurrentSlide(slides.length - 1);
+          setCurrentSlide(filteredSlides.length - 1);
         }
       }, 500);
       return () => clearTimeout(transitionEnd);
     }
-  }, [currentSlide, isTransitioning]);
+  }, [currentSlide, isTransitioning, filteredSlides.length]);
 
   useEffect(() => {
     const checkJoinedStatus = async () => {
@@ -140,17 +148,17 @@ const CommunitySlider = () => {
     <div className="relative w-full max-w-xl mx-auto overflow-hidden">
       <div
         className={`flex ${isTransitioning ? 'transition-transform duration-500' : ''}`}
-        style={{ transform: `translateX(-${(currentSlide % slides.length) * 90}%)` }}
+        style={{ transform: `translateX(-${(currentSlide % filteredSlides.length) * 90}%)` }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {slides.concat(slides[0]).map((slide, index) => (
+        {filteredSlides.concat(filteredSlides[0]).map((slide, index) => (
           <div key={index} className="min-w-[90%]">
             <div className="bg-[#17181A] mr-4 rounded-[12px] py-6 px-4 flex flex-col">
               <h2 className="font-medium">{slide.title}</h2>
               <p className="pb-2 text-[14px]">{slide.description}</p>
 
-              {index === 0 ? (
+              {slide.link === '/checkin' ? (
                 <NavLink
                   to={slide.link}
                   className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
@@ -158,14 +166,12 @@ const CommunitySlider = () => {
                   Claim
                 </NavLink>
               ) : (
-                !hasJoined && (
-                  <button
-                    onClick={() => handleJoinClick(slide.link)}
-                    className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
-                  >
-                    Join
-                  </button>
-                )
+                <button
+                  onClick={() => handleJoinClick(slide.link)}
+                  className="bg-btn4 py-1 px-3 text-[16px] font-semibold w-fit rounded-[30px]"
+                >
+                  Join
+                </button>
               )}
             </div>
           </div>
@@ -173,11 +179,11 @@ const CommunitySlider = () => {
       </div>
 
       <div className="flex justify-center mt-3 space-x-2">
-        {slides.map((_, index) => (
+        {filteredSlides.map((_, index) => (
           <span
             key={index}
             className={`w-2 h-2 rounded-full cursor-pointer ${
-              index === (currentSlide % slides.length) ? 'bg-white' : 'bg-gray-400'
+              index === (currentSlide % filteredSlides.length) ? 'bg-white' : 'bg-gray-400'
             }`}
             onClick={() => handleDotClick(index)}
           ></span>
