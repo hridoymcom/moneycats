@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from "../firebase/firestore";
@@ -22,32 +22,32 @@ const CommunitySlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [setHasJoined] = useState(null); // for showing alert
+  const [setHasJoined] = useState(null); // fixed
 
-  const startSlideInterval = () => {
+  const handleNextSlide = useCallback(() => {
+    setIsTransitioning(true);
+    setCurrentSlide((prevSlide) => prevSlide + 1);
+  }, []);
+
+  const handlePrevSlide = useCallback(() => {
+    setIsTransitioning(true);
+    setCurrentSlide((prevSlide) => prevSlide - 1);
+  }, []);
+
+  const startSlideInterval = useCallback(() => {
     slideInterval.current = setInterval(() => {
       handleNextSlide();
     }, 5000);
-  };
+  }, [handleNextSlide]);
 
-  const stopSlideInterval = () => {
+  const stopSlideInterval = useCallback(() => {
     clearInterval(slideInterval.current);
-  };
+  }, []);
 
   useEffect(() => {
     startSlideInterval();
     return () => stopSlideInterval();
-  }, []);
-
-  const handleNextSlide = () => {
-    setIsTransitioning(true);
-    setCurrentSlide((prevSlide) => prevSlide + 1);
-  };
-
-  const handlePrevSlide = () => {
-    setIsTransitioning(true);
-    setCurrentSlide((prevSlide) => prevSlide - 1);
-  };
+  }, [startSlideInterval, stopSlideInterval]);
 
   const handleDotClick = (index) => {
     stopSlideInterval();
@@ -93,13 +93,13 @@ const CommunitySlider = () => {
         console.log('Telegram user not found');
         return;
       }
-  
+
       const tgUser = window.Telegram.WebApp.initDataUnsafe.user;
-  
+
       try {
         const userRef = doc(db, 'telegramUsers', tgUser.id.toString());
         const docSnap = await getDoc(userRef);
-  
+
         if (docSnap.exists()) {
           const userData = docSnap.data();
           setHasJoined(userData.hasJoined);
@@ -115,10 +115,10 @@ const CommunitySlider = () => {
         console.error('Error checking join status:', err);
       }
     };
-  
+
     checkJoinedStatus();
   }, []);
-  
+
   return (
     <div className="relative w-full max-w-xl mx-auto overflow-hidden">
       <div
