@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from "../firebase/firestore";
+import { UserContext } from '../context/userContext';
 
 const slides = [
   {
@@ -23,6 +24,7 @@ const CommunitySlider = () => {
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [hasJoined, setHasJoined] = useState(null);
+  const { user } = useContext(UserContext); // get user from context
 
   const handleNextSlide = useCallback(() => {
     setIsTransitioning(true);
@@ -89,15 +91,13 @@ const CommunitySlider = () => {
 
   useEffect(() => {
     const checkJoinedStatus = async () => {
-      if (typeof window === 'undefined' || !window?.Telegram?.WebApp?.initDataUnsafe?.user) {
-        console.log('Telegram user not found');
+      if (!user?.id) {
+        console.log('User not found in context');
         return;
       }
 
-      const tgUser = window.Telegram.WebApp.initDataUnsafe.user;
-
       try {
-        const userRef = doc(db, 'telegramUsers', tgUser.id.toString());
+        const userRef = doc(db, 'telegramUsers', user.id.toString());
         const docSnap = await getDoc(userRef);
 
         if (docSnap.exists()) {
@@ -105,8 +105,8 @@ const CommunitySlider = () => {
           setHasJoined(userData.hasJoined);
         } else {
           await setDoc(userRef, {
-            username: tgUser.username || '',
-            first_name: tgUser.first_name || '',
+            username: user.username || '',
+            fullName: user.fullName || '',
             hasJoined: false,
           });
           setHasJoined(false);
@@ -117,16 +117,15 @@ const CommunitySlider = () => {
     };
 
     checkJoinedStatus();
-  }, []);
+  }, [user]);
 
   const handleJoinClick = async (link) => {
-    if (typeof window === 'undefined' || !window?.Telegram?.WebApp?.initDataUnsafe?.user) {
-      alert('Telegram user not found');
+    if (!user?.id) {
+      alert('User not found');
       return;
     }
 
-    const tgUser = window.Telegram.WebApp.initDataUnsafe.user;
-    const userRef = doc(db, 'telegramUsers', tgUser.id.toString());
+    const userRef = doc(db, 'telegramUsers', user.id.toString());
 
     try {
       await setDoc(userRef, { hasJoined: true }, { merge: true });
