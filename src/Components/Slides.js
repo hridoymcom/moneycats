@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from '../firebase'; // <-- adjust this path based on your project structure
+import { db } from '../firebase/firestore'; // <-- adjust this path based on your project structure
 
 const slides = [
   {
