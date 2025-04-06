@@ -41,6 +41,16 @@ const CommunitySlider = () => {
   };
 // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    
+  const startSlideInterval = () => {
+    slideInterval.current = setInterval(() => {
+      handleNextSlide();
+    }, 5000);
+  };
+
+  const stopSlideInterval = () => {
+    clearInterval(slideInterval.current);
+  };
     startSlideInterval();
     return () => stopSlideInterval();
   }, []);
