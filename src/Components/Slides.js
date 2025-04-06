@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/firestore';
-// import { useUser} from '../context/userContext';
+import { useUser} from '../context/userContext';
 
 const slides = [
   {
@@ -29,8 +29,8 @@ const CommunitySlider = () => {
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  //testing purpose only
-  const user = useMemo(() => ({ id: 1, fullName: "test name" }), []);
+  //testing purpose only for production use userContext
+  const user = useUser();
   
   const startSlideInterval = () => {
     slideInterval.current = setInterval(() => {
