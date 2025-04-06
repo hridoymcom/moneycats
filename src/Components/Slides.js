@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/firestore';
@@ -28,8 +28,10 @@ const CommunitySlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
- 
-  const user = {id:1,fullName:"test name"};
+
+  //testing purpose only
+  const user = useMemo(() => ({ id: 1, fullName: "test name" }), []);
+  
   const startSlideInterval = () => {
     slideInterval.current = setInterval(() => {
       handleNextSlide();
