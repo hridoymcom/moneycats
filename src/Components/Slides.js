@@ -30,6 +30,7 @@ const CommunitySlider = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const users = useUser();
   console.log(users);
+  const user = {id:1,fullName:"test name"};
   const startSlideInterval = () => {
     slideInterval.current = setInterval(() => {
       handleNextSlide();
