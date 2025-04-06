@@ -39,7 +39,7 @@ const CommunitySlider = () => {
   const stopSlideInterval = () => {
     clearInterval(slideInterval.current);
   };
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     startSlideInterval();
     return () => stopSlideInterval();

@@ -15,7 +15,7 @@ module.exports = {
           cards2: "#a4a4a421",
           cards3: "#2b2b2be2",
           hoverbg: "#8a8a8a",
-          headerCard: "#1f2023",
+           headerCard: "#1f2023",
           energybar: "#1D1D1D",
           btn: "#ffffff",
           // btn: "#c67e77",
