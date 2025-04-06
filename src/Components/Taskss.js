@@ -198,8 +198,8 @@ const Taskss = () => {
           <RiAdvertisementFill size={20} color="white" />
         </div>
         <div style={styles.body}>
-          <div style={styles.title}>Watch an Ad to Earn {task.bonus} $MCATS</div>
-          <div style={styles.footer}>+{task.bonus} $MCATS</div>
+          <div style={styles.title}>Watch an Ad to Earn {task.bonus} 💰MCATS</div>
+          <div style={styles.footer}>+{task.bonus} 💰MCATS</div>
         </div>
         <div style={styles.after}>
           {!adWatched ? (

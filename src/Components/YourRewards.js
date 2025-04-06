@@ -46,7 +46,7 @@ const YourRewards = () => {
                 <span className='flex items-center w-fit text-[15px]'>
                    
                    <span className='font-semibold text-primary'>
-                     +{formatNumber(checkinRewards)} $MCATS
+                     +{formatNumber(checkinRewards)} 💰MCATS
                    </span>
                  </span>
         
@@ -73,7 +73,7 @@ const YourRewards = () => {
                 <span className='flex items-center w-fit text-[15px]'>
                    
                    <span className='font-semibold text-primary'>
-                     +{formatNumber(taskPoints)} $MCATS
+                     +{formatNumber(taskPoints)} 💰MCATS
                    </span>
                  </span>
         
@@ -99,7 +99,7 @@ const YourRewards = () => {
                 <span className='flex items-center w-fit text-[15px]'>
                    
                    <span className='font-semibold text-primary'>
-                     +{formatNumber(miningTotal)} $MCATS
+                     +{formatNumber(miningTotal)} 💰MCATS
                    </span>
                  </span>
         
@@ -127,7 +127,7 @@ const YourRewards = () => {
                 <span className='flex items-center w-fit text-[15px]'>
                    
                    <span className='font-semibold text-primary'>
-                     +{formatNumber(premiumReward)} $MCATS
+                     +{formatNumber(premiumReward)} 💰MCATS
                    </span>
                  </span>
         

@@ -14,7 +14,7 @@ const slides = [
   },
   {
     id: 'community',
-    title: '$MCATS COMMUNITY',
+    title: '💰MCATS COMMUNITY',
     description: 'Join MONEY CATS community',
     link: 'https://t.me/MoneyCatsCommunity',
     type: 'external',

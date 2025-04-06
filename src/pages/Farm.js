@@ -473,7 +473,7 @@ const CryptoFarming = () => {
           <span className='flex items-center justify-center space-x-[2px] text-[18px]'>
           <img src='/dogs.webp' alt='dscfd' className='w-[18px]'/>
 
-          <span className="text-accent pr-[6px]">+{formatNumber(pointsEarned)} $MCATS </span> CLAIMED
+          <span className="text-accent pr-[6px]">+{formatNumber(pointsEarned)} 💰MCATS </span> CLAIMED
               </span>
         </span>
         <p className="pb-6 text-[15px] w-full text-center">

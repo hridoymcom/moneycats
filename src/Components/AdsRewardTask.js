@@ -259,7 +259,7 @@ const AdRewardComponent = () => {
             Watch Ads
           </h1>
           <span className="flex text-secondary items-center w-fit text-[15px]">
-            +{task.bonus} $MCATS
+            +{task.bonus} 💰MCATS
           </span>
         </div>
         <p className="text-xs text-gray-400 mt-1">

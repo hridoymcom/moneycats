@@ -17,7 +17,7 @@ const TelegramPaymentButton = () => {
       const providerToken = process.env.REACT_APP_PROVIDER_TOKEN;  // Access the provider token from environment variables
 
       const invoiceLink = await createInvoice(
-        "BoostPoints For $MCATS",
+        "BoostPoints For 💰MCATS",
         price,
         id,
         botToken,
@@ -42,7 +42,7 @@ const TelegramPaymentButton = () => {
           </div>
           <div style={styles.body}>
             <span style={styles.title}>Boost Your Points with Stars</span>
-            <div style={styles.footer}>1 Star = 100 $MCATS</div>
+            <div style={styles.footer}>1 Star = 100 💰MCATS</div>
           </div>
           <div style={styles.buttonContainer}>
             <button

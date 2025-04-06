@@ -10,28 +10,28 @@ const walletAddress = process.env.REACT_APP_TON_WALLET_ADDRESS;
 
 const rankBoosting = [
   {
-    title: "10,000 $MCATS",
+    title: "10,000 💰MCATS",
     capacity: 10000,
     cost: '100000000',
     price: 0.1,
     xx: '10,000'
   },
   {
-    title: "30,000 $MCATS",
+    title: "30,000 💰MCATS",
     capacity: 30000,
     cost: '300000000',
     price: 0.3,
     xx: '30,0000'
   },
   {
-    title: "50,000 $MCATS",
+    title: "50,000 💰MCATS",
     capacity: 50000,
     cost: '500000000',
     price: 0.5,
     xx: '10x'
   },
   {
-    title: "100,000 $MCATS",
+    title: "100,000 💰MCATS",
     capacity: 100000,
     cost: '700000000',
     price: 0.7,
@@ -110,12 +110,12 @@ const BoostRank = () => {
           <span className='flex items-center justify-center space-x-[2px] text-[18px]'>
 <img src='/dogs.webp' alt='sdfd' className='w-[15px]'/>
 
-          <span className="text-accent">+{selectedPower.capacity} $MCATS</span>
+          <span className="text-accent">+{selectedPower.capacity} 💰MCATS</span>
               </span>
-          <span>Your Purchase of {selectedPower.xx} $MCATS is successful</span>
+          <span>Your Purchase of {selectedPower.xx} 💰MCATS is successful</span>
         </span>
         <p className="pb-6 text-[15px] w-full text-center">
-          Perform more activities or buy more $MCATS to stay ahead and claim listing giveaway bonues!😎
+          Perform more activities or buy more 💰MCATS to stay ahead and claim listing giveaway bonues!😎
         </p>
       </div>
       );
@@ -245,7 +245,7 @@ className='w-full bg-cards py-4 px-4 rounded-[8px] flex justify-between items-ce
                     {selectedPower.title}
                     </h3>
                     <p className="pb-6 text-primary text-[14px] px-4 text-center">
-                      Get {selectedPower.capacity} $MCATS and boost your earnings and ranks!
+                      Get {selectedPower.capacity} 💰MCATS and boost your earnings and ranks!
                     </p>
 
                     <div className='w-full flex justify-center items-center space-x-2 pb-3'>

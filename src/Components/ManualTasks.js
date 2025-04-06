@@ -112,7 +112,7 @@ const ManualTasks = () => {
           <span className={`text-accent`}>+{formatNumber(task.bonus)}</span> NGT CLAIMED
         </h3>
         <p className="pb-6 text-[15px] w-full text-center">
-          Keep performing new tasks! something huge is coming! Perform more and earn more $MCATS now! 
+          Keep performing new tasks! something huge is coming! Perform more and earn more 💰MCATS now! 
         </p>
       </div>
     );
@@ -182,7 +182,7 @@ const ManualTasks = () => {
                 <span className='flex text-secondary items-center w-fit text-[15px]'>
                
                   <span className=''>
-                    +{formatNumber(task.bonus)} $MCATS
+                    +{formatNumber(task.bonus)} 💰MCATS
                   </span>
                 </span>
               </div>
