@@ -8,7 +8,7 @@ module.exports = {
         colors: {
           primary: "#ffffff",
           secondary: "#BABABA",
-          accent: "red",
+          accent: "#0088cc",
           // accent: "#ff9a90",
           cards: "#1f2023",
           // cards: "#a4a4a433",
@@ -17,7 +17,7 @@ module.exports = {
           hoverbg: "#8a8a8a",
           headerCard: "#1f2023",
           energybar: "#1D1D1D",
-          btn: "red",
+          btn: "#0088cc",
           // btn: "#c67e77",
           btn2: "#1f2023",
           btn3: "#5A4420",
