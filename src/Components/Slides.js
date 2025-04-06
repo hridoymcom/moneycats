@@ -28,8 +28,8 @@ const CommunitySlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const user = useUser();
-
+  const users = useUser();
+  console.log(users);
   const startSlideInterval = () => {
     slideInterval.current = setInterval(() => {
       handleNextSlide();
