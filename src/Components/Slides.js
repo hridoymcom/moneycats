@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/firestore';
-// import { useUser} from '../context/userContext';
+import { useUser} from '../context/userContext';
 
 const slides = [
   {
@@ -28,8 +28,8 @@ const CommunitySlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  // const users = useUser();
-  const user = {id:1,fullName:"test name"};
+  const user = useContext(useUser);
+
   const startSlideInterval = () => {
     slideInterval.current = setInterval(() => {
       handleNextSlide();
@@ -39,6 +39,7 @@ const CommunitySlider = () => {
   const stopSlideInterval = () => {
     clearInterval(slideInterval.current);
   };
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     
   const startSlideInterval = () => {
