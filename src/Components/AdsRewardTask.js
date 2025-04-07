@@ -163,6 +163,7 @@ const AdRewardComponent = () => {
   };
 
   const showAd = async () => {
+    alert("hi");
     if (!isScriptLoaded || !isScriptInitialized) {
       try {
         await loadAdScript();
