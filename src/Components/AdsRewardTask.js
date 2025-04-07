@@ -264,8 +264,8 @@ const AdRewardComponent = () => {
         </div>
         <p className="text-xs text-gray-400 mt-1">
           Ads Watched: {dailyAdCount}/{MAX_DAILY_ADS}
-          {cooldownRemaining > 0 &&
-            ` (Cooldown: ${formatTimeRemaining(cooldownRemaining)})`}
+          {/* {cooldownRemaining > 0 &&
+            ` (Cooldown: ${formatTimeRemaining(cooldownRemaining)})`} */}
         </p>
       </div>
       <div className="w-fit flex items-center space-x-1 justify-end flex-wrap text-[14px] relative">
