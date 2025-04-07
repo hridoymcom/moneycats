@@ -55,6 +55,7 @@ const AdRewardComponent = () => {
   }, []);
 
   const calculateCooldown = useCallback(() => {
+    if(dailyAdCount >= 5){
     const now = Date.now();
     const lastClaimTime = parseInt(
       localStorage.getItem(STORAGE_KEYS.LAST_CLAIM_TIME) || "0"
@@ -63,7 +64,7 @@ const AdRewardComponent = () => {
 
     if (timeSinceLastClaim < COOLDOWN_PERIOD) {
       return COOLDOWN_PERIOD - timeSinceLastClaim;
-    }
+    }}
     return 0;
   }, []);
 
