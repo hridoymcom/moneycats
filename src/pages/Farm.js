@@ -185,7 +185,8 @@ const CryptoFarming = () => {
 
   useEffect(() => {
     if (isFarming) {
-      fanAudioRef.current.play(); // Play the sound when farming starts
+      by default fan sound is off
+      // fanAudioRef.current.play(); // Play the sound when farming starts
     } else {
       fanAudioRef.current.pause(); // Pause the sound when farming stops
     }
