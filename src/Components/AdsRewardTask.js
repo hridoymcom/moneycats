@@ -6,7 +6,7 @@ import { useUser } from "../context/userContext";
 import CountdownCircle from "./CountdownCircle";
 
 const MAX_DAILY_ADS = 5;
-const COOLDOWN_PERIOD = 60 * 60 * 1000; // 1 hour in milliseconds
+const COOLDOWN_PERIOD = 60 * 60 * 1000*2; // 1 hour in milliseconds
 const STORAGE_KEYS = {
   DAILY_COUNT: "adReward_dailyCount",
   LAST_AD_DATE: "adReward_lastAdDate",
@@ -268,37 +268,33 @@ const AdRewardComponent = () => {
             ` (Cooldown: ${formatTimeRemaining(cooldownRemaining)})`}
         </p>
       </div>
-
       <div className="w-fit flex items-center space-x-1 justify-end flex-wrap text-[14px] relative">
-        {completedTasks.includes(taskId) ? (
-          <CheckCircle className="text-green-500" size={24} />
-        ) : dailyAdCount >= MAX_DAILY_ADS ? (
-          <div className="w-[78px] py-[10px] text-center font-semibold rounded-[30px] px-3 bg-red-500 text-white">
-            Limit Reached
-          </div>
-        ) : cooldownRemaining > 0 ? (
-          <CountdownCircle
-            remainingTime={cooldownRemaining}
-            totalTime={COOLDOWN_PERIOD}
-          />
-        ) : showClaimButton ? (
-          <button
-            onClick={claimReward}
-            disabled={claiming || !canWatchAd()}
-            className="w-[78px] py-[10px] text-center font-semibold rounded-[30px] px-3 bg-[#1f2023] hover:bg-[#36373c] text-white disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {claiming ? "Claiming..." : "Claim"}
-          </button>
-        ) : (
-          <button
-            onClick={showAd}
-            disabled={!canWatchAd()}
-            className="w-[78px] py-[10px] text-center font-semibold rounded-[30px] px-3 bg-[#1f2023] hover:bg-[#36373c] text-white disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Start
-          </button>
-        )}
-      </div>
+  {completedTasks.includes(taskId) ? (
+    <CheckCircle className="text-green-500" size={24} />
+  ) : dailyAdCount >= MAX_DAILY_ADS && cooldownRemaining > 0 ? (
+    <CountdownCircle
+      remainingTime={cooldownRemaining}
+      totalTime={COOLDOWN_PERIOD}
+    />
+  ) : showClaimButton ? (
+    <button
+      onClick={claimReward}
+      disabled={claiming || !canWatchAd()}
+      className="w-[78px] py-[10px] text-center font-semibold rounded-[30px] px-3 bg-[#1f2023] hover:bg-[#36373c] text-white disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {claiming ? "Claiming..." : "Claim"}
+    </button>
+  ) : (
+    <button
+      onClick={showAd}
+      disabled={!canWatchAd()}
+      className="w-[78px] py-[10px] text-center font-semibold rounded-[30px] px-3 bg-[#1f2023] hover:bg-[#36373c] text-white disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Start
+    </button>
+  )}
+</div>
+
 
       {congrats && (
         <div className="w-full absolute top-[50px] left-0 right-0 flex justify-center z-50 pointer-events-none select-none">
