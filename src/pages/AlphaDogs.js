@@ -100,7 +100,7 @@ const AlphaDogs = () => {
                           alt="dfd"
                           className="w-[26px] mt-[2px]"
                         />
-                        <span className="">Withdraw to wallet</span>
+                        <span className="text-white">Withdraw to wallet</span>
                       </NavLink>
                     </div>
                   </div>
