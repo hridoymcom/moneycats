@@ -66,7 +66,7 @@ const AdRewardComponent = () => {
       return COOLDOWN_PERIOD - timeSinceLastClaim;
     }}
     return 0;
-  }, []);
+  }, [dailyAdCount]);
 
   useEffect(() => {
     const currentCount = checkAndResetDaily();
