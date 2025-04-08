@@ -246,13 +246,6 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (!initialized) {
-      sendUserData();
-    }
-  }, [initialized]);
-  
-
   const updateActiveTime = async (userRef) => {
 
     try {
