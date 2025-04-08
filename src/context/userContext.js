@@ -22,8 +22,6 @@ export const UserProvider = ({ children }) => {
   const [claimedReferralRewards, setClaimedReferralRewards] = useState([]);
   const [referrals, setReferrals] = useState([]);
   const telegramUser = window.Telegram.WebApp.initDataUnsafe?.user;
-  console.log(telegramUser.toString());
-  alert(telegramUser.toString());
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [walletAddress, setWalletAddress] = useState('');
