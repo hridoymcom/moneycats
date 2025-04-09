@@ -343,7 +343,7 @@ const CryptoFarming = () => {
       <div className="w-full px-3 pt-5">
         
         <div className="w-full bg-cards rounded-[12px] px-4 pt-4 pb-2 flex flex-col items-center justify-center mb-3 relative">
-        <h2 className="font-medium text-secondary text-[14px]">Mined Tokens</h2>
+        <h2 className="font-medium text-secondary text-[14px]">Mined Tokenss</h2>
           <span className="text-[26px] font-semibold">
           {farmingCompleted ? (
             <>
