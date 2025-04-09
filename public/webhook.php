@@ -52,7 +52,7 @@ if (isset($update['message']['text']) && strpos($text, '/start') === 0) {
     if ($text === '/start' || $referrer_id) {
         // Caption for the welcome message
         $caption = "
-            Welcome to BLEGGS Miner 🔥
+            Welcome to Money Cats 🔥
 
             Our Telegram Miner is now live, and you're among the first to experience it in beta! 
             Start MINING today and unlock incredible rewards as you grow your crypto stack faster.
