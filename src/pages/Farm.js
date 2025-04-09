@@ -331,7 +331,7 @@ const CryptoFarming = () => {
   <img
     src='./animation.png'
     alt='animation'
-    className='w-full h-full object-cover scale-110' // 👈 zoom effect
+    className='w-full h-full object-cover scale-150' // 👈 zoom effect
     style={{ animationDuration: `${spinDuration}s` }}
   />
 </div>
