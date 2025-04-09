@@ -27,6 +27,8 @@ const CryptoFarming = () => {
   const [farmingCompleted, setFarmingCompleted] = useState(false);
   const [spinDuration, setSpinDuration] = useState(0);
   console.log(spinDuration);
+  console.log(elapsedTimer);
+  console.log(animatePoints);
   // eslint-disable-next-line
   const [elapsedTimer, setElapsedTimer] = useState(0);
   const [isMuted, setIsMuted] = useState(false); // To handle mute/unmute
