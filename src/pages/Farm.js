@@ -328,11 +328,11 @@ const CryptoFarming = () => {
         <div className='w-full flex justify-center items-center text-center'>
           <div className='w-[150px] h-[150px] fanbg border-[#616161] border-[4px] flex justify-center rounded-full items-center text-center relative'>
           <img
-        src={isFarming ? './farming.gif' : './animation.png'}
-        alt="farming"
-        className={`w-[145px] h-[145px] rounded-full ${!isFarming ? 'animate-spin' : ''}`}
-        style={{ animationDuration: `${spinDuration}s` }}
-      />
+    src='./animation.png'
+    alt='animation'
+    className='w-full h-full object-cover scale-110' // 👈 zoom effect
+    style={{ animationDuration: `${spinDuration}s` }}
+  />
 
             {/* <div className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[34px] w-[34px] flex justify-center items-center'>
               <img src='/dogs.webp' alt='sdfd' className='w-[14px]'/>
