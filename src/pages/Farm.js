@@ -327,12 +327,14 @@ const CryptoFarming = () => {
 
         <div className='w-full flex justify-center items-center text-center'>
           <div className='w-[150px] h-[150px] fanbg border-[#616161] border-[4px] flex justify-center rounded-full items-center text-center relative'>
-          <img
+          <div className='w-[145px] h-[145px] rounded-full overflow-hidden'>
+  <img
     src='./animation.png'
     alt='animation'
     className='w-full h-full object-cover scale-110' // 👈 zoom effect
     style={{ animationDuration: `${spinDuration}s` }}
   />
+</div>
 
             {/* <div className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[34px] w-[34px] flex justify-center items-center'>
               <img src='/dogs.webp' alt='sdfd' className='w-[14px]'/>
@@ -343,7 +345,7 @@ const CryptoFarming = () => {
       <div className="w-full px-3 pt-5">
         
         <div className="w-full bg-cards rounded-[12px] px-4 pt-4 pb-2 flex flex-col items-center justify-center mb-3 relative">
-        <h2 className="font-medium text-secondary text-[14px]">Mined Tokenss</h2>
+        <h2 className="font-medium text-secondary text-[14px]">Mined Tokens</h2>
           <span className="text-[26px] font-semibold">
           {farmingCompleted ? (
             <>
