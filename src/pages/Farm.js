@@ -26,9 +26,6 @@ const CryptoFarming = () => {
   const [canClaim, setCanClaim] = useState(false);
   const [farmingCompleted, setFarmingCompleted] = useState(false);
   const [spinDuration, setSpinDuration] = useState(0);
-  console.log(spinDuration);
-  console.log(elapsedTimer);
-  console.log(animatePoints);
   // eslint-disable-next-line
   const [elapsedTimer, setElapsedTimer] = useState(0);
   const [isMuted, setIsMuted] = useState(false); // To handle mute/unmute
@@ -41,14 +38,18 @@ const CryptoFarming = () => {
 
   const fanAudioRef = useRef(null); // Reference to the audio element
   const [openInfoTwo, setOpenInfoTwo] = useState(false);
-
+  
   const infoRefTwo = useRef(null);
-
+  
   const handleClickOutside = (event) => {
     if (infoRefTwo.current && !infoRefTwo.current.contains(event.target)) {
       setOpenInfoTwo(false);
     }
   };
+  
+  console.log(spinDuration);
+  console.log(elapsedTimer);
+  console.log(animatePoints);
 
   useEffect(() => {
     if (openInfoTwo) {
