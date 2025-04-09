@@ -329,7 +329,7 @@ const CryptoFarming = () => {
           <div className='w-[150px] h-[150px] fanbg border-[#616161] border-[4px] flex justify-center rounded-full items-center text-center relative'>
           <div className='w-[145px] h-[145px] rounded-full overflow-hidden'>
   <img
-    src='./animation.png'
+    src={isFarming ? '/farming.gif' : '/animation.png'}
     alt='animation'
     className='w-full h-full object-cover scale-150' // 👈 zoom effect
     style={{ animationDuration: `${spinDuration}s` }}
