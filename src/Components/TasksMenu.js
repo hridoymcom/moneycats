@@ -47,7 +47,6 @@ const TasksMenu = () => {
 
   const checkTelegramMembership = async (taskId) => {
     try {
-      alert(process.env.REACT_APP_BOT_TOKEN);
       const task = tasks.find(task => task.id === taskId);
       const response = await axios.get(`https://api.telegram.org/bot${telegramBotToken}/getChatMember`, {
         params: {
@@ -68,7 +67,7 @@ const TasksMenu = () => {
       }
     } catch (error) {
       console.error('Error verifying Telegram membership:', error);
-      setCurrentError({ [taskId]: `Could not verify, try again, test` });
+      setCurrentError({ [taskId]: `Could not verify, try again` });
     //   setTimeout(() => {
     //     setCurrentError({});
     // }, 1000);
