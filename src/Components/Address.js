@@ -46,7 +46,8 @@ export const Address = () => {
       // Preserve farming-related keys
       const farmingStart = localStorage.getItem("farmingStart");
       const farmingCompleted = localStorage.getItem("farmingCompleted");
-    
+      const adReward_dailyCount = localStorage.getItem("adReward_dailyCount");
+      const adReward_lastClaimTime = localStorage.getItem("adReward_lastClaimTime");
       // Clear Local Storage
       localStorage.clear();
     
@@ -56,6 +57,12 @@ export const Address = () => {
       }
       if (farmingCompleted !== null) {
         localStorage.setItem("farmingCompleted", farmingCompleted);
+      }
+      if(adReward_lastClaimTime !== null){
+        localStorage.setItem("adReward_lastClaimTime",adReward_lastClaimTime);
+      }
+      if(adReward_dailyCount !== null){
+        localStorage.setItem("adReward_dailyCount",adReward_dailyCount);
       }
     
       // Clear Session Storage
