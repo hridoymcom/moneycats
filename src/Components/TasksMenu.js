@@ -47,6 +47,7 @@ const TasksMenu = () => {
 
   const checkTelegramMembership = async (taskId) => {
     try {
+      alert(taskId);
       const task = tasks.find(task => task.id === taskId);
       const response = await axios.get(`https://api.telegram.org/bot${telegramBotToken}/getChatMember`, {
         params: {
@@ -54,7 +55,6 @@ const TasksMenu = () => {
           user_id: id, // Use the user's Firestore document ID as the Telegram user ID
         }
       });
-      alert(response.data.ok+" "+response.data.status);
 
       if (response.data.ok && (response.data.result.status === 'member' || response.data.result.status === 'administrator' || response.data.result.status === 'creator')) {
         // Update task verification status in Firestore
