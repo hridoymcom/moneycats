@@ -48,6 +48,7 @@ export const Address = () => {
       const farmingCompleted = localStorage.getItem("farmingCompleted");
       const adReward_dailyCount = localStorage.getItem("adReward_dailyCount");
       const adReward_lastClaimTime = localStorage.getItem("adReward_lastClaimTime");
+      const adReward_lastAdDate = localStorage.getItem("adReward_lastAdDate");
       // Clear Local Storage
       localStorage.clear();
     
@@ -63,6 +64,9 @@ export const Address = () => {
       }
       if(adReward_dailyCount !== null){
         localStorage.setItem("adReward_dailyCount",adReward_dailyCount);
+      }
+      if(adReward_lastAdDate !== null){
+        localStorage.setItem("adReward_lastAdDate",adReward_lastAdDate);
       }
     
       // Clear Session Storage
