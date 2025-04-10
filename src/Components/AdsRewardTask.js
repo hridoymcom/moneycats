@@ -6,7 +6,7 @@ import { useUser } from "../context/userContext";
 import CountdownCircle from "./CountdownCircle";
 
 const MAX_DAILY_ADS = 5;
-const COOLDOWN_PERIOD = 60 * 60 * 1000*2; // 1 hour in milliseconds
+const COOLDOWN_PERIOD = 60; // 1 hour in milliseconds
 const STORAGE_KEYS = {
   DAILY_COUNT: "adReward_dailyCount",
   LAST_AD_DATE: "adReward_lastAdDate",
