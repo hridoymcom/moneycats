@@ -47,8 +47,7 @@ const TasksMenu = () => {
 
   const checkTelegramMembership = async (taskId) => {
     try {
-      alert(taskId);
-      const task = tasks.find(task => task.id === taskId);
+      const task = tasks.find(task => {console.log(task);alert(task.id);return task.id === taskId;});
       const response = await axios.get(`https://api.telegram.org/bot${telegramBotToken}/getChatMember`, {
         params: {
           chat_id: task.chatId,
