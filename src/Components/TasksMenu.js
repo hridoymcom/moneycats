@@ -50,7 +50,7 @@ const TasksMenu = () => {
       const task = tasks.find(task => task.id === taskId);
       const response = await axios.get(`https://api.telegram.org/bot${telegramBotToken}/getChatMember`, {
         params: {
-          chat_id: task.chatId,
+          chat_id: "@"+task.chatId,
           user_id: id, // Use the user's Firestore document ID as the Telegram user ID
         }
       });
