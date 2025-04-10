@@ -67,7 +67,7 @@ const TasksMenu = () => {
       }
     } catch (error) {
       console.error('Error verifying Telegram membership:', error);
-      setCurrentError({ [taskId]: `Could not verify, try again` });
+      setCurrentError({ [taskId]: `Could not verify, try again, test` });
     //   setTimeout(() => {
     //     setCurrentError({});
     // }, 1000);
