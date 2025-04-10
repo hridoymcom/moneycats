@@ -34,7 +34,7 @@ const AdRewardComponent = () => {
   const [isScriptInitialized, setIsScriptInitialized] = useState(false);
 
   const task = {
-    bonus: 1000,
+    bonus: 100,
   };
 
   const generateTaskId = () => `adTask_${new Date().getTime()}`;
