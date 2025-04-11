@@ -104,7 +104,8 @@ useEffect(() => {
   if (cooldownRemaining <= 0 && !adWatched) {
     setShowClaimButton(false);
     localStorage.removeItem("SHOW_CLAIM_BUTTON");
-    localStorage.setItem(STORAGE_KEYS.DAILY_COUNT,0)
+    localStorage.setItem(STORAGE_KEYS.DAILY_COUNT,0);
+    setAdWatched(0);
   }
 }, [cooldownRemaining, adWatched]);
 
