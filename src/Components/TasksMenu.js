@@ -169,6 +169,8 @@ const TasksMenu = () => {
           </h3>
 
           <div className={`w-full flex items-end justify-center flex-col space-y-1`}>
+          <AdRewardTask/>
+
             {tasks.map(task => (
                     <>
               <div key={task.id} className="w-full rounded-[16px] py-3 flex items-center justify-between space-x-1">
@@ -287,7 +289,6 @@ const TasksMenu = () => {
 
             <TonTask/>
 
-            <AdRewardTask/>
 
             <TelegramPaymentButton/>
 
