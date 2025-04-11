@@ -317,9 +317,9 @@ const CryptoFarming = () => {
         </div>
 
 
-        <button onClick={() => setShowSettings(true)} className="absolute right-5">
+        {/* <button onClick={() => setShowSettings(true)} className="absolute right-5">
           <IoSettingsOutline size={24} className=""/>
-        </button>
+        </button> */}
 
         </div>
 
@@ -409,7 +409,7 @@ const CryptoFarming = () => {
 
     {showSettings && (
         <div className="fixed left-0 right-0 z-20 top-[-12px] bottom-0 flex justify-center taskbg px-[16px] h-full">
-{/*
+
           <div id="refer" className='w-full flex flex-col'>
           <div className="w-full flex pt-6 flex-col space-y-6 overflow-y-auto pb-[100px] scroller">
             <div className="flex items-center space-x-4">
@@ -458,14 +458,14 @@ const CryptoFarming = () => {
               </div>
             </div>
           </div>
-          </div>*/}
+          </div>
         </div>
       )}
 
 
 <div className='w-full absolute top-[50px] flex justify-center z-50 pointer-events-none select-none'>
       {congrats ? (<img src='/congrats.gif' alt="congrats" className="w-[80%]"/>) : (<></>)}
-      </div>
+</div>
 
 
 <div
