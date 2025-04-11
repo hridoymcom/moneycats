@@ -6,7 +6,7 @@ import { useUser } from "../context/userContext";
 import CountdownCircle from "./CountdownCircle";
 
 const MAX_DAILY_ADS = 5;
-const COOLDOWN_PERIOD = 60 * 60 * 1000*2; // 1 hour in milliseconds
+const COOLDOWN_PERIOD = 6; // 1 hour in milliseconds
 const STORAGE_KEYS = {
   DAILY_COUNT: "adReward_dailyCount",
   LAST_AD_DATE: "adReward_lastAdDate",
@@ -98,6 +98,15 @@ const AdRewardComponent = () => {
 
     return () => clearInterval(timer);
   }, [calculateCooldown]);
+
+// 👇 New Effect: When cooldownRemaining hits 0, reset showClaimButton (if not already watching)
+useEffect(() => {
+  if (cooldownRemaining <= 0 && !adWatched) {
+    setShowClaimButton(false);
+    localStorage.removeItem("SHOW_CLAIM_BUTTON");
+  }
+}, [cooldownRemaining, adWatched]);
+
 
   const loadAdScript = () => {
     return new Promise((resolve, reject) => {
