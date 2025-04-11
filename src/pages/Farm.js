@@ -5,8 +5,8 @@ import { useUser } from "../context/userContext";
 import { IoCheckmarkCircleSharp, IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineTimer } from "react-icons/md";
 import Animate from "../Components/Animate";
-// import { IoVolumeMediumSharp } from "react-icons/io5";
-// import { IoVolumeMute } from "react-icons/io5";
+import { IoVolumeMediumSharp } from "react-icons/io5";
+import { IoVolumeMute } from "react-icons/io5";
 import BoostFarm from "../Components/BoostFarm";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { PiInfo } from "react-icons/pi";
@@ -317,9 +317,9 @@ const CryptoFarming = () => {
         </div>
 
 
-        <button onClick={() => setShowSettings(true)} className="absolute right-5">
+        {/* <button onClick={() => setShowSettings(true)} className="absolute right-5">
           <IoSettingsOutline size={24} className=""/>
-        </button>
+        </button> */}
 
         </div>
 
