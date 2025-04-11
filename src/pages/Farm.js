@@ -317,9 +317,9 @@ const CryptoFarming = () => {
         </div>
 
 
-        {/* <button onClick={() => setShowSettings(true)} className="absolute right-5">
+        <button onClick={() => setShowSettings(true)} className="absolute right-5">
           <IoSettingsOutline size={24} className=""/>
-        </button> */}
+        </button>
 
         </div>
 
