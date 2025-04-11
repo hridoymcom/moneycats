@@ -408,8 +408,8 @@ const CryptoFarming = () => {
 
 
     {showSettings && (
-        {/*<div className="fixed left-0 right-0 z-20 top-[-12px] bottom-0 flex justify-center taskbg px-[16px] h-full">
-
+        <div className="fixed left-0 right-0 z-20 top-[-12px] bottom-0 flex justify-center taskbg px-[16px] h-full">
+{/*
           <div id="refer" className='w-full flex flex-col'>
           <div className="w-full flex pt-6 flex-col space-y-6 overflow-y-auto pb-[100px] scroller">
             <div className="flex items-center space-x-4">
@@ -458,8 +458,8 @@ const CryptoFarming = () => {
               </div>
             </div>
           </div>
-          </div>
-        </div>*/}
+          </div>*/}
+        </div>
       )}
 
 
