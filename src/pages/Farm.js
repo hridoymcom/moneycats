@@ -195,7 +195,7 @@ const CryptoFarming = () => {
     }
     // eslint-disable-next-line
   }, [isFarming]);
-
+    // eslint-disable-next-line
   const toggleMute = () => {
     setIsMuted(!isMuted);
     fanAudioRef.current.muted = !isMuted;
