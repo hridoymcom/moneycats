@@ -5,7 +5,7 @@ import { db } from "../firebase/firestore";
 import { useUser } from "../context/userContext";
 import CountdownCircle from "./CountdownCircle";
 
-const MAX_DAILY_ADS = 5;
+const MAX_DAILY_ADS = 1;
 const COOLDOWN_PERIOD = 60 * 60 * 1000*2; // 1 hour in milliseconds
 const STORAGE_KEYS = {
   DAILY_COUNT: "adReward_dailyCount",
