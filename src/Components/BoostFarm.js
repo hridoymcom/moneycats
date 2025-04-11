@@ -246,7 +246,7 @@ className='w-full bg-cards py-4 px-4 rounded-[8px] flex justify-between items-ce
 <span className='w-[40px] h-[40px] fanbg border-[#616161] border-[1px] flex justify-center items-center rounded-full text-center relative transition-transform duration-300 hover:scale-110'>
 <div className='w-[40px] h-[40px] rounded-full overflow-hidden'>
   <img
-    src={isFarming ? '/farming.gif' : '/animation.png'}
+    src='/animation.png'
     alt='animation'
     className='w-full h-full object-cover scale-150' // 👈 zoom effect
     style={{ animationDuration: `${spinDuration}s` }}
