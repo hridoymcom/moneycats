@@ -190,8 +190,8 @@ const BoostFarm = () => {
                 <div className="w-full flex justify-center flex-col items-center">
                  
 
-<div className='w-[60px] h-[60px] fanbg border-[#616161] border-[2px] flex justify-center rounded-full items-center text-center relative'><span className='w-[90px] h-[90px] fanbg border-[#616161] border-[1px] flex justify-center items-center rounded-full text-center relative transition-transform duration-300 hover:scale-110'>
-<div className='w-[90px] h-[90px] rounded-full overflow-hidden'>
+<div className='w-[60px] h-[60px] fanbg border-[#616161] border-[2px] flex justify-center rounded-full items-center text-center relative'><span className='w-[60px] h-[60px] fanbg border-[#616161] border-[1px] flex justify-center items-center rounded-full text-center relative transition-transform duration-300 hover:scale-110'>
+<div className='w-[60px] h-[60px] rounded-full overflow-hidden'>
   <img
     src='/animation.png'
     alt='animation'
