@@ -11,28 +11,28 @@ import { IoCheckmarkCircleSharp, IoClose } from 'react-icons/io5';
 const miningPowers = [
   {
     title: "3x mining rig power",
-    capacity: 1200,
+    capacity: 45,
     cost: '200000000',
-    price: 0.2,
+    price: 0.0,
     xx: '3x'
   },
   {
     title: "5x mining rig power",
-    capacity: 2000,
+    capacity: 75,
     cost: '300000000',
     price: 0.3,
     xx: '5x'
   },
   {
     title: "10x mining rig power",
-    capacity: 4000,
+    capacity: 150,
     cost: '500000000',
     price: 0.5,
     xx: '10x'
   },
   {
     title: "15x mining rig power",
-    capacity: 6000,
+    capacity: 225,
     cost: '700000000',
     price: 0.7,
     xx: '15x'
