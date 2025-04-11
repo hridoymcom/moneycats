@@ -101,13 +101,13 @@ const AdRewardComponent = () => {
 
 // 👇 New Effect: When cooldownRemaining hits 0, reset showClaimButton (if not already watching)
 useEffect(() => {
-  if (cooldownRemaining <= 0 && !adWatched) {
+  if (cooldownRemaining <= 0 && !adWatched && dailyAdCount >= 5) {
     setShowClaimButton(false);
     localStorage.removeItem("SHOW_CLAIM_BUTTON");
     localStorage.setItem(STORAGE_KEYS.DAILY_COUNT,0);
     setDailyAdCount(0);
   }
-}, [cooldownRemaining, adWatched]);
+}, [cooldownRemaining, adWatched, dailyAdCount]);
 
 
   const loadAdScript = () => {
