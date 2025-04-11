@@ -408,7 +408,7 @@ const CryptoFarming = () => {
 
 
     {showSettings && (
-        <div className="fixed left-0 right-0 z-20 top-[-12px] bottom-0 flex justify-center taskbg px-[16px] h-full">
+        {/*<div className="fixed left-0 right-0 z-20 top-[-12px] bottom-0 flex justify-center taskbg px-[16px] h-full">
 
           <div id="refer" className='w-full flex flex-col'>
           <div className="w-full flex pt-6 flex-col space-y-6 overflow-y-auto pb-[100px] scroller">
@@ -422,7 +422,7 @@ const CryptoFarming = () => {
   
                 <div className='flex w-full flex-col space-y-2'>
              
-                    {/* <button 
+                     <button 
                       onClick={toggleMute}
                       className={`text-[15px] text-[#d2d2d2] bg-cards3 hover:bg-cards ease-in duration-200 h-[60px] rounded-[14px] px-4 flex justify-between items-center`}
                     >
@@ -450,7 +450,7 @@ const CryptoFarming = () => {
                          )}
                       
             
-                    </button> */}
+                    </button> 
             
                 </div>
 
@@ -459,7 +459,7 @@ const CryptoFarming = () => {
             </div>
           </div>
           </div>
-        </div>
+        </div>*/}
       )}
 
 
