@@ -245,8 +245,7 @@ className='w-full bg-cards py-4 px-4 rounded-[8px] flex justify-between items-ce
 <div className='w-[90px] h-[90px] fanbg border-[#616161] border-[4px] flex justify-center rounded-full items-center text-center relative'>
 <span className='w-[40px] h-[40px] fanbg border-[#616161] border-[1px] flex justify-center items-center rounded-full text-center relative transition-transform duration-300 hover:scale-110'>
   <img src='/animation.png' alt='dscfd' className='w-[24px] h-[24px]' />
-  <span className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[16px] w-[16px] flex justify-center items-center'>
-    <img src='/dogs.webp' alt='sdfd' className='w-[9px]' />
+  <span className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[24px] w-[24px] flex justify-center items-center'>
   </span>
 </span>
 <div className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[34px] w-[34px] flex justify-center items-center'>
