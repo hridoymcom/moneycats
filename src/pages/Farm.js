@@ -12,7 +12,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { PiInfo } from "react-icons/pi";
 
 const CryptoFarming = () => {
-  const FARM_DURATION = 10800; // 60 seconds for 1 minute
+  const FARM_DURATION = 28800; // 60 seconds for 1 minute
   const [timeRemaining, setTimeRemaining] = useState(FARM_DURATION);
   const TRIGGER_TIME = FARM_DURATION - 1;
   const TRIGGER_TIMETWO = FARM_DURATION - 3;
