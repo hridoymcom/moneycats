@@ -54,6 +54,30 @@ export const UserProvider = ({ children }) => {
     // eslint-disable-next-line
     const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
 
+    const fixMiningPowerForAllUsers = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "telegramUsers"));
+        querySnapshot.forEach(async (document) => {
+          const data = document.data();
+    
+          // Only update if miningPower is not already 15
+          if (data.miningPower !== 15) {
+            await updateDoc(doc(db, "telegramUsers", document.id), {
+              miningPower: 15,
+            });
+            console.log(`Updated ${document.id} → miningPower set to 15`);
+          }
+        });
+    
+        console.log("All updates complete.");
+      } catch (error) {
+        console.error("Error updating miningPower:", error);
+      }
+    };
+    useEffect(() => {
+      fixMiningPowerForAllUsers();
+    }, []);
+    
   const fetchData = async (userId) => {
     if (!userId) return;
   
