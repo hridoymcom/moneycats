@@ -6,7 +6,7 @@ import { useUser } from "../context/userContext";
 import CountdownCircle from "./CountdownCircle";
 
 const MAX_DAILY_ADS = 5;
-const COOLDOWN_PERIOD = 6; // 1 hour in milliseconds
+const COOLDOWN_PERIOD = 1000*3; // 1 hour in milliseconds
 const STORAGE_KEYS = {
   DAILY_COUNT: "adReward_dailyCount",
   LAST_AD_DATE: "adReward_lastAdDate",
@@ -104,6 +104,7 @@ useEffect(() => {
   if (cooldownRemaining <= 0 && !adWatched) {
     setShowClaimButton(false);
     localStorage.removeItem("SHOW_CLAIM_BUTTON");
+    setAdWatched(0);
   }
 }, [cooldownRemaining, adWatched]);
 
