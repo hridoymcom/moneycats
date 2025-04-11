@@ -106,12 +106,13 @@ const BoostFarm = () => {
         <span className="font-medium text-[20px] text-[#ffffff] pt-2 pb-2 flex flex-col justify-center w-full text-center items-center space-x-1">
           
           <span className='flex items-center justify-center space-x-[2px] text-[18px]'>
-          <span className='w-[20px] h-[20px] fanbg border-[#616161] border-[1px] flex justify-center rounded-full items-center text-center relative'>
-<img src='/animation.png' alt='dscfd' className='w-[16px] h-[16px]'/>
-<span className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[12px] w-[14px] flex justify-center items-center'>
-<img src='/dogs.webp' alt='sdfd' className='w-[7px]'/>
+          <span className='w-[40px] h-[40px] fanbg border-[#616161] border-[1px] flex justify-center items-center rounded-full text-center relative transition-transform duration-300 hover:scale-110'>
+  <img src='/animation.png' alt='dscfd' className='w-[24px] h-[24px]' />
+  <span className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[16px] w-[16px] flex justify-center items-center'>
+    <img src='/dogs.webp' alt='sdfd' className='w-[9px]' />
+  </span>
 </span>
-</span>
+
           <span className="text-accent">+{selectedPower.capacity} PPH</span>
               </span>
           <span>Mining Rig Upgraded to {selectedPower.xx} Proft Per Hour</span>
