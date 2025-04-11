@@ -5,7 +5,9 @@ import { useUser } from "../context/userContext";
 import { IoCheckmarkCircleSharp, IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineTimer } from "react-icons/md";
 import Animate from "../Components/Animate";
+  // eslint-disable-next-line
 import { IoVolumeMediumSharp } from "react-icons/io5";
+  // eslint-disable-next-line
 import { IoVolumeMute } from "react-icons/io5";
 import BoostFarm from "../Components/BoostFarm";
 import { IoIosInformationCircleOutline } from "react-icons/io";
@@ -422,7 +424,7 @@ const CryptoFarming = () => {
   
                 <div className='flex w-full flex-col space-y-2'>
              
-                    <button 
+                    {/* <button 
                       onClick={toggleMute}
                       className={`text-[15px] text-[#d2d2d2] bg-cards3 hover:bg-cards ease-in duration-200 h-[60px] rounded-[14px] px-4 flex justify-between items-center`}
                     >
@@ -450,7 +452,7 @@ const CryptoFarming = () => {
                          )}
                       
             
-                    </button>
+                    </button> */}
             
                 </div>
 
