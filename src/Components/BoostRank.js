@@ -193,7 +193,7 @@ const BoostRank = () => {
 className='w-full bg-cards py-4 px-4 rounded-[8px] flex justify-between items-center'>
 <span className='flex flex-1 space-x-[6px] items-center'>
 <span className='w-[24px] h-[24px] fanbg border-[#616161] border-[1px] flex justify-center rounded-full items-center text-center relative'>
-<img src='/fan.webp' alt='dscfd' className='w-[18px] h-[18px]'/>
+<img src='/animation.png' alt='dscfd' className='w-[18px] h-[18px]'/>
 <span className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[14px] w-[14px] flex justify-center items-center'>
 <img src='/dogs.webp' alt='sdfd' className='w-[7px]'/>
 </span>

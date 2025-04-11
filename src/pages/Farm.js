@@ -520,9 +520,9 @@ const CryptoFarming = () => {
             <div className="w-full items-center justify-center flex flex-col space-y-2">
             <div className='w-[50px] h-[50px] fanbg border-[#616161] border-[2px] flex justify-center rounded-full items-center text-center relative'>
 {isFarming ? (
-  <img src='/fan.webp' alt='dscfd' className='w-[30px] h-[30px] animate-spin' style={{ animationDuration: '2s' }}/>
+  <img src='/animation.png' alt='dscfd' className='w-[30px] h-[30px] animate-spin' style={{ animationDuration: '2s' }}/>
 ) : (
-  <img src='/fan.webp' alt='dscfd' className='w-[30px] h-[30px]'/>
+  <img src='/animation.png' alt='dscfd' className='w-[30px] h-[30px]'/>
 )}
 <div className='absolute z-10 bg-[#3f2900] border-[1px] border-[#8b8b8b] rounded-full h-[16px] w-[16px] flex justify-center items-center'>
 <img src='/dogs.webp' alt='sdfd' className='w-[8px]'/>
